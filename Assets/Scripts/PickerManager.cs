@@ -14,8 +14,15 @@ public class PickerManager : MonoBehaviour {
 	private bool mIsAxisInUse = false;
 	private bool mIsSelectedInUse = false;
 
+	private static PickerManager instance = null;
+
 	// Use this for initialization
 	void Start () {
+		if (instance == null) {
+			instance = this;
+		} else if (instance != this) {
+			Destroy(gameObject);
+		}
 		mCharacters[0] = sphere;
 		mCharacters[1] = cylinder;
 		mCharacters[2] = capsule;
