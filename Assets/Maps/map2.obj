@@ -1,6 +1,6 @@
 # Blender v2.76 (sub 0) OBJ File: 'map.blend'
 # www.blender.org
-mtllib map.mtl
+mtllib map2.mtl
 o Plane
 v -7.984290 0.000000 7.984290
 v 7.984290 0.000000 7.984290

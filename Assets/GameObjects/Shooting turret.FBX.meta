@@ -1,17 +1,63 @@
 fileFormatVersion: 2
-guid: 4fdfbed116fdb498c9dc227fdca18fca
-timeCreated: 1449908448
+guid: f3d9c042f85af41b99adc051dc09c266
+timeCreated: 1449906899
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2300000: default
-    3300000: default
-    4300000: default
+    100000: Box01
+    100002: Box02
+    100004: Box03
+    100006: Box04
+    100008: Box05
+    100010: Box06
+    100012: Box07
+    100014: mr Area Omni01
+    100016: mr Area Omni02
+    100018: //RootNode
+    100020: Tube01
+    100022: Tube02
+    400000: Box01
+    400002: Box02
+    400004: Box03
+    400006: Box04
+    400008: Box05
+    400010: Box06
+    400012: Box07
+    400014: mr Area Omni01
+    400016: mr Area Omni02
+    400018: //RootNode
+    400020: Tube01
+    400022: Tube02
+    2300000: Box01
+    2300002: Box02
+    2300004: Box03
+    2300006: Box04
+    2300008: Box05
+    2300010: Box06
+    2300012: Box07
+    2300014: Tube01
+    2300016: Tube02
+    3300000: Box01
+    3300002: Box02
+    3300004: Box03
+    3300006: Box04
+    3300008: Box05
+    3300010: Box06
+    3300012: Box07
+    3300014: Tube01
+    3300016: Tube02
+    4300000: Tube01
+    4300002: Box01
+    4300004: Box02
+    4300006: Tube02
+    4300008: Box03
+    4300010: Box04
+    4300012: Box05
+    4300014: Box06
+    4300016: Box07
+    7400000: Take 001
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -70,7 +116,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
