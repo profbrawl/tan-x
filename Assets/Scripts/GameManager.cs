@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -8,6 +9,10 @@ public class GameManager : MonoBehaviour {
 	public int numberOfMaps = 1;
 	public GameObject[] tanks = new GameObject[1];
 	public GameObject[] maps = new GameObject[1];
+    public int playerOneScore = 0;
+    public int playerTwoScore = 0;
+    public Text playerOneText;
+    public Text playerTwoText;    
 
 	public static GameManager instance = null;
 
@@ -27,7 +32,8 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
-		// Map effects :D
+        AddToScore(1);
+        AddToScore(2);
 	}
 
 	void SetupTanks() {
@@ -35,4 +41,20 @@ public class GameManager : MonoBehaviour {
 			Instantiate (tanks [i]);
 		}
 	}
+
+    /// <summary>
+    /// Adds a point to the given player's score
+    /// </summary>
+    /// <param name="player"> 1 for player one, 2 for player two</param>
+    void AddToScore(int player)
+    {
+        if (player == 1)
+        {
+            playerOneText.text = "Player 1 Kills: " + ++playerOneScore;
+        }
+        else
+        {
+            playerTwoText.text = "Player 2 Kills: " + ++playerTwoScore;
+        }
+    }
 }
