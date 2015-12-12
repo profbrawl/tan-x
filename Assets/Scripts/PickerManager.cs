@@ -12,6 +12,7 @@ public class PickerManager : MonoBehaviour {
 	private GameObject[] mCharacters = new GameObject[4];
 	private int mCurrentSelected = -1;
 	private bool mIsAxisInUse = false;
+	private bool mIsSelectedInUse = false;
 
 	// Use this for initialization
 	void Start () {
@@ -63,6 +64,12 @@ public class PickerManager : MonoBehaviour {
 				}
 			}
 		}
+
+		if (Input.GetKey(KeyCode.KeypadEnter) || Input.GetButtonDown("Submit")) {
+			Debug.Log("Submit button");
+			Application.LoadLevel("GameScene");
+		}
+			
 	}
 
 	private void animateForward(int position) {
@@ -100,6 +107,12 @@ public class PickerManager : MonoBehaviour {
 				break;
 			default:
 				break;
+		}
+	}
+
+	private void animateSelected(int position) {
+		if (position != -1) { // No item has been selected yet.
+			mCharacters[position].GetComponent<Animation>().Blend("SelectedEnter");
 		}
 	}
 }
