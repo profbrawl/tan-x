@@ -200,7 +200,11 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: c7ba8def4740d4e398a3b86ca09fbfc2, type: 2}
+=======
+  - {fileID: 2100000, guid: 14f39d3f768cc4c9b83ecfa35415c821, type: 2}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -256,11 +260,19 @@ Animation:
   m_GameObject: {fileID: 245682561}
   m_Enabled: 1
   serializedVersion: 3
+<<<<<<< HEAD
   m_Animation: {fileID: 7400000, guid: 77881c3c886f345bd93ac45ddb9f164a, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 77881c3c886f345bd93ac45ddb9f164a, type: 2}
   - {fileID: 7400000, guid: 38222d5ee4e8646fdb62405bcae17e60, type: 2}
   - {fileID: 7400000, guid: 5e9775433576440d1a465ef50bb6b7bb, type: 2}
+=======
+  m_Animation: {fileID: 7400000, guid: 5043942b6a80d41f7b4dbc7329375b66, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5043942b6a80d41f7b4dbc7329375b66, type: 2}
+  - {fileID: 7400000, guid: 5d9e652df53bb48449e3c6c48f42648a, type: 2}
+  - {fileID: 7400000, guid: edac7402a4c7f453c8b5f73c6782486d, type: 2}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -289,7 +301,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 755035753}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 8df1b5e379fb34fc78211f823e74d21f, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: 35b131520b28043e7809c1e335c7bb05, type: 3}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_Name: 
   m_EditorClassIdentifier: 
   sphere: {fileID: 1263669800}
@@ -411,7 +427,11 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: 4d6eb726e65f94f14a6116aaa15e6f42, type: 2}
+=======
+  - {fileID: 2100000, guid: 9d2b7d711621646fdbfced76a9cd0ef2, type: 2}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -466,11 +486,19 @@ Animation:
   m_GameObject: {fileID: 1263669800}
   m_Enabled: 1
   serializedVersion: 3
+<<<<<<< HEAD
   m_Animation: {fileID: 7400000, guid: 77881c3c886f345bd93ac45ddb9f164a, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 77881c3c886f345bd93ac45ddb9f164a, type: 2}
   - {fileID: 7400000, guid: 05a3594cf95564396a4ea21fc1e666b4, type: 2}
   - {fileID: 7400000, guid: 3e578a0b523c641128c999ecc632c7e9, type: 2}
+=======
+  m_Animation: {fileID: 7400000, guid: 5043942b6a80d41f7b4dbc7329375b66, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5043942b6a80d41f7b4dbc7329375b66, type: 2}
+  - {fileID: 7400000, guid: b938562489d894e1a9b8435de50209cf, type: 2}
+  - {fileID: 7400000, guid: d006dc9e270734780877dc7664385eeb, type: 2}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -565,7 +593,11 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: fa7528194d3a4425ab0ee69cc6cc9f05, type: 2}
+=======
+  - {fileID: 2100000, guid: e1490dc97db1d4382a0e55446fa50e75, type: 2}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -621,11 +653,19 @@ Animation:
   m_GameObject: {fileID: 1541665256}
   m_Enabled: 1
   serializedVersion: 3
+<<<<<<< HEAD
   m_Animation: {fileID: 7400000, guid: 77881c3c886f345bd93ac45ddb9f164a, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 77881c3c886f345bd93ac45ddb9f164a, type: 2}
   - {fileID: 7400000, guid: 54d435f59dfc8461cbeeeb7d80f6faee, type: 2}
   - {fileID: 7400000, guid: a85f726dcd7c84586b4c975632863921, type: 2}
+=======
+  m_Animation: {fileID: 7400000, guid: 5043942b6a80d41f7b4dbc7329375b66, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5043942b6a80d41f7b4dbc7329375b66, type: 2}
+  - {fileID: 7400000, guid: e42c5baeb810840c898611f38ee570ba, type: 2}
+  - {fileID: 7400000, guid: 8320d09c7c966498d86f1787aeba2c93, type: 2}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -642,6 +682,10 @@ GameObject:
   - 65: {fileID: 1656636387}
   - 23: {fileID: 1656636386}
   - 111: {fileID: 1656636390}
+<<<<<<< HEAD
+=======
+  - 114: {fileID: 1656636391}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -659,7 +703,11 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: 3c6abc7d95bbc4841b3048bf3cd7152c, type: 2}
+=======
+  - {fileID: 2100000, guid: 9951fa4914b9947d596ddae70e8d221d, type: 2}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -714,12 +762,36 @@ Animation:
   m_GameObject: {fileID: 1656636385}
   m_Enabled: 1
   serializedVersion: 3
+<<<<<<< HEAD
   m_Animation: {fileID: 7400000, guid: 77881c3c886f345bd93ac45ddb9f164a, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 77881c3c886f345bd93ac45ddb9f164a, type: 2}
   - {fileID: 7400000, guid: 92d36314b376e4b6b9950c07cb7d3e89, type: 2}
   - {fileID: 7400000, guid: bc9f36e644abc45e494aa5b3e9fd8d14, type: 2}
+=======
+  m_Animation: {fileID: 7400000, guid: 5043942b6a80d41f7b4dbc7329375b66, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5043942b6a80d41f7b4dbc7329375b66, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 7400000, guid: 9734c1fb2df2a42049e984d6c232e4e9, type: 2}
+  - {fileID: 7400000, guid: e8bab588c94384ae8b416b0357d1625a, type: 2}
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+<<<<<<< HEAD
+=======
+--- !u!114 &1656636391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1656636385}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4544b75b4cb11471f98e0e2593a9ce13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> bc454263923d6640cd52d60c5809893d9857902a
