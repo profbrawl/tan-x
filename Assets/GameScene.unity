@@ -261,8 +261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfTanks: 1
   numberOfMaps: 1
-  tanks:
-  - {fileID: 122916, guid: bfbca61cc9f6b489dacf5c9f4b8bcf5e, type: 2}
+  players:
+  - {fileID: 178006, guid: 027448fc0df924d8bbd8d23ffced7daa, type: 2}
   maps:
   - {fileID: 159272, guid: 646fca45cf4f04158965c5c867aa1922, type: 2}
 --- !u!4 &1995196358
@@ -290,3 +290,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   turnSpeed: 50
+  shootForce: 200

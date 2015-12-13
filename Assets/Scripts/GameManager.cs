@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 	// Public variables
 	public int numberOfTanks = 1;
 	public int numberOfMaps = 1;
-	public GameObject[] tanks = new GameObject[1];
+	public GameObject[] players = new GameObject[1];
 	public GameObject[] maps = new GameObject[1];
 
 	public static GameManager instance = null;
@@ -31,8 +31,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void SetupTanks() {
-		for (int i = 0; i < numberOfTanks; ++i) {
-			Instantiate (tanks [i]);
-		}
+		Instantiate (players [0]).transform.forward = new Vector3 (0,0,1);
+		//Instantiate (players[1], new Vector3(-0.54f, 0f, 0.56f), Quaternion.identity);
 	}
 }
