@@ -646,7 +646,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Player 1 Kills:'
+  m_Text: 'Player 1 Kills: 0'
 --- !u!222 &1180799317
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1324,7 +1324,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Player 2 Kills:'
+  m_Text: 'Player 2 Kills: 0'
 --- !u!222 &2067268763
 CanvasRenderer:
   m_ObjectHideFlags: 0
