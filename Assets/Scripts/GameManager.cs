@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour {
     public int playerTwoScore = 0;
     public Text playerOneText;
     public Text playerTwoText;
-    public Text intro;    
+    public GameObject gameOverText;
+    public bool gamePaused = false;
+    private const int WIN_SCORE = 300;
 
 	public static GameManager instance = null;
 
@@ -33,8 +35,13 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {        
-        AddToScore(1);        
-        AddToScore(2);
+
+
+        if(!gamePaused)
+        {
+            AddToScore(1);
+            //AddToScore(2);
+        }        
 	}
 
 	void SetupTanks() {
@@ -56,16 +63,57 @@ public class GameManager : MonoBehaviour {
         {
             playerTwoText.text = "Player 2 Kills: " + ++playerTwoScore;
         }
+        CheckGameOver();
     }
 
-    //IEnumerator PlayIntro()
-    //{
-    //    intro.text = "3...";
-    //    yield return new WaitForSeconds(1);
-    //    intro.text = "2...";
-    //    yield return new WaitForSeconds(1);
-    //    intro.text = "1...";
-    //    yield return new WaitForSeconds(1);
-    //    intro.text = "FIGHT!";        
-    //}
+    void CheckGameOver()
+    {
+        Text winnerText = gameOverText.GetComponent("Text") as Text;
+        if (playerOneScore == WIN_SCORE)
+        {
+            winnerText.text = "Player 1 Wins!";
+            gameOverText.SetActive(true);
+            PauseGame();  
+        }else if(playerTwoScore == WIN_SCORE)
+        {
+            winnerText.text = "Player 2 Wins!";
+            gameOverText.SetActive(true);
+            PauseGame();
+        }
+    }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        gamePaused = true;
+    }
+
+    void UnPauseGame()
+    {
+        Time.timeScale = 1;
+        gamePaused = false;
+    }
+
+    void RestartGame()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+        UnPauseGame();
+    }
+
+    void LoadMainMenu()
+    {
+        Application.LoadLevel("Home Screen");
+        Time.timeScale = 1;
+    }
+
+    public void Restart_Click()
+    {
+        RestartGame();
+    }
+
+    public void MainMenu_Click()
+    {
+        LoadMainMenu();
+    }
+
 }
