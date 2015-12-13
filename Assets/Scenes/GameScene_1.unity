@@ -114,7 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfTanks: 1
   players:
-  - {fileID: 115124, guid: 426385c5373a9491e83f74c889a19c82, type: 2}
+  - {fileID: 135674, guid: 426385c5373a9491e83f74c889a19c82, type: 2}
+  - {fileID: 130946, guid: 112ac37b2ed6545558b844c3c3a08d4e, type: 2}
   playerOneScore: 0
   playerTwoScore: 0
   playerOneText: {fileID: 0}
