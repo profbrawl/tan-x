@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 
 	// Public variables
 	public int numberOfTanks = 1;
-	public GameObject[] players = new GameObject[1];
+	public GameObject[] players = new GameObject[2];
     public int playerOneScore = 0;
     public int playerTwoScore = 0;
     public Text playerOneText;
@@ -30,12 +30,13 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {        
-        AddToScore(1);        
-        AddToScore(2);
+        //AddToScore(1);        
+        //AddToScore(2);
 	}
 
 	void SetupTanks() {
 		Instantiate (players [0]).transform.forward = new Vector3 (0,0,1);
+		Instantiate (players [1]).transform.forward = new Vector3 (0,0,1);
 	}
 	
     void AddToScore(int player)

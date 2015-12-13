@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tank : MonoBehaviour {
+public class Vehicle : MonoBehaviour {
 	
 	private int specialGunCount = 3;
+	public int health = 100;
 
 	// Temp speeds
 	public float moveSpeed = 4f;
 	public float turnSpeed = 200f;
 	public int shootForce = 400;
-	
+
 	void Update () {
 		
 		// Temp controls for testing
@@ -24,7 +25,7 @@ public class Tank : MonoBehaviour {
 		
 		if(Input.GetKey(KeyCode.RightArrow))
 			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-
+		
 		if (Input.GetMouseButtonUp (0)) {
 			GameObject laser;
 			if (specialGunCount != 0) {
@@ -33,8 +34,12 @@ public class Tank : MonoBehaviour {
 			} else {
 				laser = (GameObject)Instantiate (Resources.Load ("LaserBullet"));
 			}
-			laser.transform.position = transform.position;
-			laser.GetComponent<Rigidbody>().AddForce(-transform.right * shootForce);
+			laser.transform.position = transform.position + new Vector3(-0.4f, 0, 0);
+			laser.GetComponent<Rigidbody>().AddForce(-transform.forward * shootForce);
+		}
+
+		if (health == 0) {
+			Destroy (gameObject);
 		}
 	}
 }

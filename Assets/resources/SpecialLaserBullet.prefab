@@ -12,6 +12,7 @@ GameObject:
   - 136: {fileID: 13649864}
   - 23: {fileID: 2398236}
   - 54: {fileID: 5402894}
+  - 114: {fileID: 11439928}
   m_Layer: 0
   m_Name: SpecialLaserBullet
   m_TagString: Untagged
@@ -77,6 +78,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &11439928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baedc9751fcbc436ca7dbb27ecb5f607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &13649864
 CapsuleCollider:
   m_ObjectHideFlags: 1

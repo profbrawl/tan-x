@@ -3,13 +3,11 @@ using System.Collections;
 
 public class Bullet : Weapon {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void OnCollisionEnter(Collision collision) {
+		Vehicle vehicle = collision.gameObject.GetComponent<Vehicle>();
+		if (vehicle != null) {
+			vehicle.health -= 5;
+		}
+		Destroy (gameObject);
 	}
 }
