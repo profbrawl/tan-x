@@ -642,7 +642,6 @@ GameObject:
   - 65: {fileID: 1656636387}
   - 23: {fileID: 1656636386}
   - 111: {fileID: 1656636390}
-  - 114: {fileID: 1656636391}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -724,14 +723,3 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &1656636391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1656636385}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4544b75b4cb11471f98e0e2593a9ce13, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
