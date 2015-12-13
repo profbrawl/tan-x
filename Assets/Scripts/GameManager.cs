@@ -57,15 +57,4 @@ public class GameManager : MonoBehaviour {
             playerTwoText.text = "Player 2 Kills: " + ++playerTwoScore;
         }
     }
-
-    //IEnumerator PlayIntro()
-    //{
-    //    intro.text = "3...";
-    //    yield return new WaitForSeconds(1);
-    //    intro.text = "2...";
-    //    yield return new WaitForSeconds(1);
-    //    intro.text = "1...";
-    //    yield return new WaitForSeconds(1);
-    //    intro.text = "FIGHT!";        
-    //}
 }
