@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour {
     public int playerOneScore = 0;
     public int playerTwoScore = 0;
     public Text playerOneText;
-    public Text playerTwoText;    
+    public Text playerTwoText;
+    public Text intro;    
 
 	public static GameManager instance = null;
 
@@ -24,15 +25,15 @@ public class GameManager : MonoBehaviour {
 			Destroy (gameObject);
 
 		Setup (0); // temp until we get more maps. Will randomize.
-	}
+	}    
 	
-	public void Setup(int mapID) {
-		Instantiate(maps[mapID]);
+	public void Setup(int mapID) {                
+		Instantiate(maps[mapID]);        
 		SetupTanks();
 	}
 	
-	void Update () {
-        AddToScore(1);
+	void Update () {        
+        AddToScore(1);        
         AddToScore(2);
 	}
 
@@ -57,4 +58,15 @@ public class GameManager : MonoBehaviour {
             playerTwoText.text = "Player 2 Kills: " + ++playerTwoScore;
         }
     }
+
+    //IEnumerator PlayIntro()
+    //{
+    //    intro.text = "3...";
+    //    yield return new WaitForSeconds(1);
+    //    intro.text = "2...";
+    //    yield return new WaitForSeconds(1);
+    //    intro.text = "1...";
+    //    yield return new WaitForSeconds(1);
+    //    intro.text = "FIGHT!";        
+    //}
 }

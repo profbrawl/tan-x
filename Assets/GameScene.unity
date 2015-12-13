@@ -578,6 +578,7 @@ MonoBehaviour:
   playerTwoScore: 0
   playerOneText: {fileID: 1637031357}
   playerTwoText: {fileID: 1141869567}
+  intro: {fileID: 0}
 --- !u!4 &1995196358
 Transform:
   m_ObjectHideFlags: 0
