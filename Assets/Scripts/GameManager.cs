@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour {
     void LoadMainMenu()
     {
         Application.LoadLevel("Home Screen");
-        Time.timeScale = 1;
+        UnPauseGame();
     }
 
     public void Restart_Click()
