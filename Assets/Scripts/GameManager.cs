@@ -1,19 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-<<<<<<< HEAD
-=======
 using UnityEngine.UI;
->>>>>>> bc454263923d6640cd52d60c5809893d9857902a
 
 public class GameManager : MonoBehaviour {
 
 	// Public variables
 	public int numberOfTanks = 1;
 	public int numberOfMaps = 1;
-<<<<<<< HEAD
-	public GameObject[] tanks = new GameObject[1];
-	public GameObject[] maps = new GameObject[1];
-=======
 	public GameObject[] players = new GameObject[1];
 	public GameObject[] maps = new GameObject[1];
     public int playerOneScore = 0;
@@ -21,7 +14,6 @@ public class GameManager : MonoBehaviour {
     public Text playerOneText;
     public Text playerTwoText;
     public Text intro;    
->>>>>>> bc454263923d6640cd52d60c5809893d9857902a
 
 	public static GameManager instance = null;
 
@@ -33,24 +25,6 @@ public class GameManager : MonoBehaviour {
 			Destroy (gameObject);
 
 		Setup (0); // temp until we get more maps. Will randomize.
-<<<<<<< HEAD
-	}
-	
-	public void Setup(int mapID) {
-		Instantiate(maps[mapID]);
-		SetupTanks();
-	}
-	
-	void Update () {
-		// Map effects :D
-	}
-
-	void SetupTanks() {
-		for (int i = 0; i < numberOfTanks; ++i) {
-			Instantiate (tanks [i]);
-		}
-	}
-=======
 	}    
 	
 	public void Setup(int mapID) {                
@@ -83,16 +57,4 @@ public class GameManager : MonoBehaviour {
             playerTwoText.text = "Player 2 Kills: " + ++playerTwoScore;
         }
     }
-
-    //IEnumerator PlayIntro()
-    //{
-    //    intro.text = "3...";
-    //    yield return new WaitForSeconds(1);
-    //    intro.text = "2...";
-    //    yield return new WaitForSeconds(1);
-    //    intro.text = "1...";
-    //    yield return new WaitForSeconds(1);
-    //    intro.text = "FIGHT!";        
-    //}
->>>>>>> bc454263923d6640cd52d60c5809893d9857902a
 }
