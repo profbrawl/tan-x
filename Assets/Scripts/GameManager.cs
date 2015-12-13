@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour {
 	// Public variables
 	public int numberOfTanks = 1;
 	public GameObject[] players = new GameObject[2];
-    public int playerOneScore = 0;
-    public int playerTwoScore = 0;
+    private int playerOneScore = 0;
+    private int playerTwoScore = 0;
     public Text playerOneText;
     public Text playerTwoText;
     public GameObject gameOverText;
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {        
         if(!gamePaused)
         {
-            AddToScore(1);
+            //AddToScore(1);
             //AddToScore(2);
         }        
 	}
