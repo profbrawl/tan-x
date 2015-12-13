@@ -6,9 +6,7 @@ public class GameManager : MonoBehaviour {
 
 	// Public variables
 	public int numberOfTanks = 1;
-	public int numberOfMaps = 1;
 	public GameObject[] players = new GameObject[1];
-	public GameObject[] maps = new GameObject[1];
     public int playerOneScore = 0;
     public int playerTwoScore = 0;
     public Text playerOneText;
@@ -27,8 +25,7 @@ public class GameManager : MonoBehaviour {
 		Setup (0); // temp until we get more maps. Will randomize.
 	}    
 	
-	public void Setup(int mapID) {                
-		Instantiate(maps[mapID]);        
+	public void Setup(int mapID) {                     
 		SetupTanks();
 	}
 	
@@ -39,13 +36,8 @@ public class GameManager : MonoBehaviour {
 
 	void SetupTanks() {
 		Instantiate (players [0]).transform.forward = new Vector3 (0,0,1);
-		//Instantiate (players[1], new Vector3(-0.54f, 0f, 0.56f), Quaternion.identity);
 	}
-
-    /// <summary>
-    /// Adds a point to the given player's score
-    /// </summary>
-    /// <param name="player"> 1 for player one, 2 for player two</param>
+	
     void AddToScore(int player)
     {
         if (player == 1)
