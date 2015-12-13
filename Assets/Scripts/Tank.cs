@@ -5,7 +5,7 @@ public class Tank : MonoBehaviour {
 
 	// Temp speeds
 	public float moveSpeed = 10f;
-	public float turnSpeed = 50f;
+	public float turnSpeed = 100f;
 	
 	void Update () {
 
