@@ -52,7 +52,7 @@ public class PickerManager : MonoBehaviour {
 	{
 		get
 		{
-			return 4 * mP1CurrentSelectedHorizontal + mP1CurrentSelectedVertical;
+			return 2 * mP1CurrentSelectedVertical + mP1CurrentSelectedHorizontal;
 		}
 	}
 
@@ -61,7 +61,7 @@ public class PickerManager : MonoBehaviour {
 	{
 		get
 		{
-			return 4 * mP2CurrentSelectedHorizontal + mP2CurrentSelectedVertical;
+			return 2 * mP2CurrentSelectedVertical + mP2CurrentSelectedHorizontal;
 		}
 	}
 
