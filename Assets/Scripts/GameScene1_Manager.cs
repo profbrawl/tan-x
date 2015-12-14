@@ -47,7 +47,7 @@ public class GameScene1_Manager : GameManager {
 	
 	void SetupPlayer2() {
 		//player2 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 8));
-		player2 = Instantiate(getVehicle (5));
+		player2 = Instantiate (getVehicle (5));
 		player2.transform.position = new Vector3 (20.8f, 0f, 16.84f);
 		player2.transform.rotation = new Quaternion (0.0f, 0.3f, 0.0f, 1.0f);
 	}

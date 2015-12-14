@@ -118,7 +118,7 @@ public class PickerManager : MonoBehaviour {
 		while (true) {
 			if (mPlayerOnePrefix.Length != 0) {
 				if (Input.GetButton(mPlayerOnePrefix + "Submit")) {
-					Application.LoadLevel("GameScene_" + Random.Range(1, numberOfMaps + 3));
+					Application.LoadLevel("GameScene_" + Random.Range(1, numberOfMaps + 1));
 					break;
 				} else {
 					yield return null;
