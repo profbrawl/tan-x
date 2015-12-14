@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
-
-	// Public variables
+	
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
 	public Text playerOneText;
