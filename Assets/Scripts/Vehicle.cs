@@ -43,18 +43,21 @@ public class Vehicle : MonoBehaviour {
 		if (Input.GetButton(playerPrefix + "Fire1")) {
 			GameObject laser;
 			if (specialAmmo != 0) {
-				laser = (GameObject)Instantiate (Resources.Load ("SpecialLaserBullet"));
+				laser = (GameObject)Instantiate (Resources.Load ("SpecialLaserBullet"), transform.position + new Vector3(-1f, 0, 0), Quaternion.identity);
 				specialAmmo--;
 			} else {
-				laser = (GameObject)Instantiate (Resources.Load ("LaserBullet"));
+				laser = (GameObject)Instantiate (Resources.Load ("LaserBullet"), transform.position + new Vector3(-1f, 0, 0), Quaternion.identity);
 			}
-			laser.transform.position = transform.position + new Vector3(-0.4f, 0, 0);
+			//laser.transform.position = transform.position + new Vector3(-0.4f, 0, 0);
 			laser.GetComponent<Rigidbody>().AddForce(-transform.forward * shootForce);
 		}
 
 		float translation = Input.GetAxis(playerPrefix + "Vertical") * moveSpeed;
 		translation *= Time.deltaTime;
 		transform.Translate(new Vector3(-1 * translation, 0, 0));
+        //transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
+        //this.GetComponent<Rigidbody>().AddForce(new Vector3(0, -10, 0));
 
 		float rotation = Input.GetAxis(playerPrefix + "Horizontal") * turnSpeed;
 		rotation *= Time.deltaTime;
