@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class GameScene1_Manager : GameManager {
+public class GameScene2_Manager : GameManager {
 	
 	public GameObject[] players = new GameObject[2];
 
@@ -21,8 +21,7 @@ public class GameScene1_Manager : GameManager {
 		SetupPlayer2 ();
 	}    
 	
-	void Update () { 
-		Debug.Log (player1.transform.rotation);
+	void Update () {    
         if(!gamePaused) {
 			player1.GetComponent<Vehicle>().getHealth();
 			if (player1.GetComponent<Vehicle>().getHealth() <= 0) {
@@ -41,14 +40,14 @@ public class GameScene1_Manager : GameManager {
 	void SetupPlayer1() {
 		//player1 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerOneCharacter % 8));
 		player1 = Instantiate(getVehicle (4));
-		player1.transform.position = new Vector3 (-29.84f, 0f, -16.83f);
+		player1.transform.position = new Vector3 (-11.623f, 0.991f, 11.781f);
 		player1.transform.rotation = new Quaternion (0.0f, 0.3f, 0.0f, 1.0f);
 	}
-	
+
 	void SetupPlayer2() {
 		//player2 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 8));
 		player2 = Instantiate(getVehicle (5));
-		player2.transform.position = new Vector3 (20.8f, 0f, 16.84f);
+		player2.transform.position = new Vector3 (12.059f, 0.991f, -11.83f);
 		player2.transform.rotation = new Quaternion (0.0f, 0.3f, 0.0f, 1.0f);
 	}
 }

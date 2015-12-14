@@ -1,77 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &130946
+--- !u!1 &106256
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 477632}
-  - 111: {fileID: 11138524}
-  - 54: {fileID: 5408230}
-  - 114: {fileID: 11418706}
-  - 136: {fileID: 13629730}
+  - 4: {fileID: 458056}
+  - 111: {fileID: 11129326}
+  - 136: {fileID: 13681774}
+  - 114: {fileID: 11434798}
+  - 54: {fileID: 5446558}
   m_Layer: 0
-  m_Name: Player_TypeB
+  m_Name: Vehicle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &172944
+--- !u!1 &164794
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 425172}
-  - 33: {fileID: 3302446}
-  - 23: {fileID: 2371276}
+  - 4: {fileID: 400220}
+  - 33: {fileID: 3313504}
+  - 23: {fileID: 2361146}
   m_Layer: 0
-  m_Name: SplitMetalBall
+  m_Name: WheelBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &425172
+--- !u!4 &400220
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172944}
-  m_LocalRotation: {x: .707106829, y: .707106709, z: -1.09611264e-07, w: -7.87026622e-08}
+  m_GameObject: {fileID: 164794}
+  m_LocalRotation: {x: .707106829, y: -.707106709, z: 1.09611264e-07, w: -7.87026622e-08}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_LocalScale: {x: .5, y: .5, z: .631377041}
   m_Children: []
-  m_Father: {fileID: 477632}
+  m_Father: {fileID: 458056}
   m_RootOrder: 0
---- !u!4 &477632
+--- !u!4 &458056
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130946}
+  m_GameObject: {fileID: 106256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9230001, y: .630999982, z: .00999999978}
+  m_LocalPosition: {x: 0, y: .990999997, z: 0}
   m_LocalScale: {x: .5, y: .5, z: .75}
   m_Children:
-  - {fileID: 425172}
+  - {fileID: 400220}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2371276
+--- !u!23 &2361146
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172944}
+  m_GameObject: {fileID: 164794}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6a15b1f15432b6f4b9a8066e1e6ca4df, type: 2}
+  - {fileID: 2100000, guid: 40db05b0756f19c43ae471505d9b8ce5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -85,21 +85,21 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3302446
+--- !u!33 &3313504
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172944}
-  m_Mesh: {fileID: 4300000, guid: 5ae1b6d4c894f9c449d33837a633a8ec, type: 3}
---- !u!54 &5408230
+  m_GameObject: {fileID: 164794}
+  m_Mesh: {fileID: 4300000, guid: 74cbada03bcd41d49acec56746acf71e, type: 3}
+--- !u!54 &5446558
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130946}
+  m_GameObject: {fileID: 106256}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 200
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -107,46 +107,46 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!111 &11138524
+--- !u!111 &11129326
 Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130946}
-  m_Enabled: 0
+  m_GameObject: {fileID: 106256}
+  m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 5ae1b6d4c894f9c449d33837a633a8ec, type: 3}
+  m_Animation: {fileID: 7400000, guid: 74cbada03bcd41d49acec56746acf71e, type: 3}
   m_Animations:
-  - {fileID: 7400000, guid: 5ae1b6d4c894f9c449d33837a633a8ec, type: 3}
+  - {fileID: 7400000, guid: 74cbada03bcd41d49acec56746acf71e, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
-  m_AnimatePhysics: 1
+  m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &11418706
+--- !u!114 &11434798
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130946}
+  m_GameObject: {fileID: 106256}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fcd28b30356f49f7ad93565bed344a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 0
   moveSpeed: 4
   turnSpeed: 200
   shootForce: 400
---- !u!136 &13629730
+--- !u!136 &13681774
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130946}
+  m_GameObject: {fileID: 106256}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
+  m_Radius: .5
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
@@ -159,41 +159,13 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_AnimatePhysics
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Direction
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 130946}
+  m_RootGameObject: {fileID: 106256}
   m_IsPrefabParent: 1

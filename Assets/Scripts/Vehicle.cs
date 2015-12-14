@@ -3,17 +3,20 @@ using System.Collections;
 
 public class Vehicle : MonoBehaviour {
 
-	private int specialGunCount;
-	public int health;
-
-	// Temp speeds
+	private int specialAmmo = 0;
+	public int health = 100;
 	public float moveSpeed = 4f;
 	public float turnSpeed = 200f;
 	public int shootForce = 400;
 
+	public int SpecialAmmo {
+		get { return specialAmmo; }
+		set { specialAmmo += value; }
+	}
+
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.layer == 8) {
-			health = health-5;
+			health -= 5;
 			Destroy (col.gameObject);
 		}
 	}
@@ -34,9 +37,9 @@ public class Vehicle : MonoBehaviour {
 
 		if (Input.GetMouseButtonUp (0)) {
 			GameObject laser;
-			if (specialGunCount != 0) {
+			if (specialAmmo != 0) {
 				laser = (GameObject)Instantiate (Resources.Load ("SpecialLaserBullet"));
-				specialGunCount--;
+				specialAmmo--;
 			} else {
 				laser = (GameObject)Instantiate (Resources.Load ("LaserBullet"));
 			}
