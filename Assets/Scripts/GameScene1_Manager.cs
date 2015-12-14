@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GameScene1_Manager : GameManager {
 	
@@ -8,7 +9,7 @@ public class GameScene1_Manager : GameManager {
 
 	private GameObject player1;
 	private GameObject player2;
-
+    
 	public static GameManager instance = null;
 	
 	void Awake () {
@@ -19,6 +20,8 @@ public class GameScene1_Manager : GameManager {
 
 		SetupPlayer1 ();
 		SetupPlayer2 ();
+        SetupPowerUpLocations();
+        InvokeRepeating("SpawnPowerup", 5f, 10f);
 	}    
 	
 	void Update () { 
@@ -26,11 +29,11 @@ public class GameScene1_Manager : GameManager {
         if(!gamePaused) {
 			player1.GetComponent<Vehicle>().getHealth();
 			if (player1.GetComponent<Vehicle>().getHealth() <= 0) {
-				AddToScore(2);
+				//AddToScore(2);
 				Destroy(player1);
 				SetupPlayer1();
 			} else if (player2.GetComponent<Vehicle>().getHealth() <= 0) {
-				AddToScore(1);
+				//AddToScore(1);
 				Destroy(player2);
 				SetupPlayer2();
 			}
@@ -51,4 +54,14 @@ public class GameScene1_Manager : GameManager {
 		player2.transform.position = new Vector3 (20.8f, 0f, 16.84f);
 		player2.transform.rotation = new Quaternion (0.0f, 0.3f, 0.0f, 1.0f);
 	}
+
+    void SetupPowerUpLocations()
+    {
+        this.powerUpSpots = new List<PowerUpLocation>();
+        this.powerUpSpots.Add(new PowerUpLocation(-2f, 0.8f, 13f));
+        this.powerUpSpots.Add(new PowerUpLocation(-2f, 0.8f, -13f));
+        this.powerUpSpots.Add(new PowerUpLocation(8f, 0.8f, -4f));
+        this.powerUpSpots.Add(new PowerUpLocation(8f, 0.8f, 5f));        
+    }
+
 }

@@ -234,7 +234,7 @@ MonoBehaviour:
   gamePaused: 0
   players:
   - {fileID: 135674, guid: 426385c5373a9491e83f74c889a19c82, type: 2}
-  - {fileID: 130946, guid: 112ac37b2ed6545558b844c3c3a08d4e, type: 2}
+  - {fileID: 0}
 --- !u!4 &268232000
 Transform:
   m_ObjectHideFlags: 0

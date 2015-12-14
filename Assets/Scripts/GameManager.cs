@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 	
     private int playerOneScore = 0;
-    private int playerTwoScore = 0;
+    private int playerTwoScore = 0;    
+    protected List<PowerUpLocation> powerUpSpots;
 	public Text playerOneText;
 	public Text playerTwoText;
 	public GameObject gameOverText;
     public bool gamePaused = false;
-	private const int WIN_SCORE = 10; 
+	private const int WIN_SCORE = 10;
+    private System.Random randomizer = new System.Random();
 
     public void AddToScore(int player) {
         if (player == 1) {
@@ -79,5 +82,36 @@ public class GameManager : MonoBehaviour {
 				return null;
 		}
 	}
+
+    protected GameObject getPowerUp(int value)
+    {
+        switch(value)
+        {
+            case 1:
+                return (GameObject)Resources.Load("SpecialAmmo");
+            case 2:
+                return (GameObject)Resources.Load("HealthPack");
+            default:
+                return null;
+        }
+    }
+
+    protected void SpawnPowerup()
+    {
+        List<PowerUpLocation> availableLocations = new List<PowerUpLocation>();
+        foreach(PowerUpLocation powerUp in this.powerUpSpots){
+            if (!powerUp.Occupied) { availableLocations.Add(powerUp); }
+        }
+        if (availableLocations.Count == 0)
+        {
+            return;
+        }else
+        {
+            PowerUpLocation locationToSpawn = availableLocations[randomizer.Next(0 , availableLocations.Count)];
+            Instantiate(getPowerUp(randomizer.Next(1,3)), new Vector3(locationToSpawn.X, locationToSpawn.Y, locationToSpawn.Z), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+            locationToSpawn.Occupied = true;
+        }
+        
+    }
 
 }
