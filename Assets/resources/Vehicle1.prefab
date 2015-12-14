@@ -13,7 +13,7 @@ GameObject:
   - 54: {fileID: 5408248}
   - 136: {fileID: 13699964}
   m_Layer: 0
-  m_Name: Player_TypeA
+  m_Name: Vehicle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
