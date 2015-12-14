@@ -23,7 +23,6 @@ public class GameScene1_Manager : GameManager {
         SetupPowerUpLocations();
         InvokeRepeating("SpawnPowerup", 5f, 10f);
 	}
-	}
 
 	void Start() {
 		Debug.Log("player 1: " + PickerManager.getInstance().PlayerOne);
