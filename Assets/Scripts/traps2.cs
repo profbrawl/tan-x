@@ -14,6 +14,7 @@ public class traps2 : MonoBehaviour
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.layer == 8)
 			Destroy (gameObject);
+			Destroy(col.gameObject);
 	}
 	void shootLaser(){
 		GameObject Temporary_laser_Handler;
