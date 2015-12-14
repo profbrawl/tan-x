@@ -38,10 +38,12 @@ public class GameScene2_Manager : GameManager {
 	}
 
 	void SetupPlayer1() {
-		player1 = Instantiate(getVehicle(PickerManager.getInstance().PlayerOneCharacter % 8));
+		//player1 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerOneCharacter % 8));
+		player1 = Instantiate(getVehicle(1));
 	}
 
 	void SetupPlayer2() {
-		player2 = Instantiate(getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 8));
+		//player2 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 8));
+		player2 = Instantiate(getVehicle(2));
 	}
 }
