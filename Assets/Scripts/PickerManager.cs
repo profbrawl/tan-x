@@ -64,7 +64,7 @@ public class PickerManager : MonoBehaviour {
 		}
 	}
 
-	public PickerManager getInstance() {
+	public static PickerManager getInstance() {
 		return instance;
 	}
 

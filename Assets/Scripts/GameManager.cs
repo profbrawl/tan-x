@@ -63,4 +63,15 @@ public class GameManager : MonoBehaviour {
         LoadMainMenu();
     }
 
+	public GameObject getVehicle(int value) {
+		switch(value) {
+			case 0:
+				return (GameObject)Resources.Load("Player_TypeA");
+			case 1:
+				return (GameObject)Resources.Load("Player_TypeB");
+			default:
+				return null;
+		}
+	}
+
 }
