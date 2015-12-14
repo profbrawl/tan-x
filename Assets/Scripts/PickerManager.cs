@@ -63,6 +63,10 @@ public class PickerManager : MonoBehaviour {
 		}
 	}
 
+	public PickerManager getInstance() {
+		return instance;
+	}
+
 	// Use this for initialization
 	void Start () {
 		if (instance == null) {
@@ -172,7 +176,7 @@ public class PickerManager : MonoBehaviour {
 			} else {
 				if (playerVAxisInUse == false && playerCurrentSelectedVertical != 0) {
 					playerVAxisInUse = true;
-					animateBackward(playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
+					animateBackward(playerCurrentSelectedVertical, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 					playerCurrentSelectedVertical = 0;
 					animateForward(playerObject, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 				}
@@ -188,7 +192,7 @@ public class PickerManager : MonoBehaviour {
 			} else {
 				if (playerVAxisInUse == false && playerCurrentSelectedVertical != 1) {
 					playerVAxisInUse = true;
-					animateBackward(playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
+					animateBackward(playerCurrentSelectedVertical, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 					playerCurrentSelectedVertical = 1;
 					animateForward(playerObject, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 				}
@@ -202,7 +206,7 @@ public class PickerManager : MonoBehaviour {
 			if (!initalSelection) {
 				if (playerHAxisInUse == false) {
 					playerHAxisInUse = true;
-					animateBackward(playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
+					animateBackward(playerCurrentSelectedVertical, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 					int nextMovePosition = (((playerCurrentSelectedHorizontal - 1) % 4) + 4) % 4;
 					animateForward(playerObject, nextMovePosition, playerCurrentSelectedVertical);
 					playerCurrentSelectedHorizontal = nextMovePosition;
@@ -219,7 +223,7 @@ public class PickerManager : MonoBehaviour {
 			if (!initalSelection) {
 				if (playerHAxisInUse == false) {
 					playerHAxisInUse = true;
-					animateBackward(playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
+					animateBackward(playerCurrentSelectedVertical, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 					int nextMovePosition = (playerCurrentSelectedHorizontal + 1) % 4;
 					animateForward(playerObject, nextMovePosition, playerCurrentSelectedVertical);
 					playerCurrentSelectedHorizontal = nextMovePosition;
@@ -243,9 +247,9 @@ public class PickerManager : MonoBehaviour {
 			player.transform.position, 0.2f));
 	}
 
-	private void animateBackward(int xPos, int yPos) {
+	private void animateBackward(int selectedVerticalPos, int xPos, int yPos) {
 		//TODO: mP1CurrentSelectedVertical doesn't look right, but this is what I'm using for now.
-		float vecYPosition = mP1CurrentSelectedVertical == 0 ? 0f : 3f;
+		float vecYPosition = selectedVerticalPos == 0 ? 0f : 3f;
 		switch(xPos) {
 			case 0:
 				StartCoroutine(MoveObject(getTransform(xPos, yPos), getTransform(xPos, yPos).position,
