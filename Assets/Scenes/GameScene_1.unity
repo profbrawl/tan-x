@@ -204,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1001 &425732387
 Prefab:
   m_ObjectHideFlags: 0
@@ -250,15 +250,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: af92809c12e5bf14097b661a14fa3e17, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: af92809c12e5bf14097b661a14fa3e17, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: af92809c12e5bf14097b661a14fa3e17, type: 3}
       propertyPath: m_LocalScale.z
-      value: -10
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: af92809c12e5bf14097b661a14fa3e17, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -292,16 +292,16 @@ Transform:
   m_PrefabParentObject: {fileID: 444582, guid: 8ecc8788ad3079b4986c7b1f08c35e9e, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 579360500}
-  m_LocalRotation: {x: .707106829, y: -2.98023224e-08, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00125245948, y: .00125245971, z: .00125245971}
+  m_LocalRotation: {x: -2.10734257e-08, y: -1, z: 0, w: -2.10734221e-08}
+  m_LocalPosition: {x: 0, y: 0, z: .0369999968}
+  m_LocalScale: {x: .000125245948, y: .000125245977, z: -.000125245977}
   m_Children:
   - {fileID: 1011606519}
   - {fileID: 1945353030}
   - {fileID: 1049342912}
   - {fileID: 1705344895}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1423597046}
+  m_RootOrder: 0
 --- !u!1 &738237590
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1011606519}
   - 114: {fileID: 1011606520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trap (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +546,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1049342912}
   - 114: {fileID: 1049342913}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,12 +823,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1261031205}
-  m_LocalRotation: {x: .239117637, y: .369643837, z: -.0990457758, w: .892399073}
-  m_LocalPosition: {x: -15.0299997, y: 11.2600002, z: -16.2099991}
+  m_LocalRotation: {x: .315985441, y: .359604806, z: -.130885467, w: .868162751}
+  m_LocalPosition: {x: -15.0299997, y: 15, z: -18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1390444319
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,6 +917,10 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: af92809c12e5bf14097b661a14fa3e17, type: 3}
+--- !u!4 &1423597046 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: af92809c12e5bf14097b661a14fa3e17, type: 3}
+  m_PrefabInternal: {fileID: 425732387}
 --- !u!1 &1660339115
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +950,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 253742dccc56147f49b3b4a277210822, type: 2}
+  - {fileID: 2100000, guid: e03b4bb821cefdd4c99f170fb0959425, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1002,7 +1006,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1705344895}
   - 114: {fileID: 1705344896}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trap (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1243,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1945353030}
   - 114: {fileID: 1945353031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trap (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1331,7 +1335,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &2067268760
 GameObject:
   m_ObjectHideFlags: 0

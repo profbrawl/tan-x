@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Vehicle : MonoBehaviour {
-	
+
 	private int specialGunCount;
 	public int health;
 
@@ -11,25 +11,27 @@ public class Vehicle : MonoBehaviour {
 	public float turnSpeed = 200f;
 	public int shootForce = 400;
 
-	void Start() {
-		specialGunCount = 0;
-		health = 100;
+	void OnCollisionEnter(Collision col){
+		if (col.gameObject.layer == 8) {
+			health = health-5;
+			Destroy (col.gameObject);
+		}
 	}
 
 	void Update () {
 		// Temp controls for testing
 		if(Input.GetKey(KeyCode.UpArrow))
 			transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-		
+
 		if(Input.GetKey(KeyCode.DownArrow))
 			transform.Translate(-Vector3.left * moveSpeed * Time.deltaTime);
-		
+
 		if(Input.GetKey(KeyCode.LeftArrow))
 			transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
-		
+
 		if(Input.GetKey(KeyCode.RightArrow))
 			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-		
+
 		if (Input.GetMouseButtonUp (0)) {
 			GameObject laser;
 			if (specialGunCount != 0) {

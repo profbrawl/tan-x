@@ -19,6 +19,6 @@ public class traps : MonoBehaviour
 		Rigidbody Temporary_RigidBody;
 		Temporary_RigidBody = Temporary_laser_Handler.GetComponent<Rigidbody>();
 		Temporary_RigidBody.AddForce(transform.forward *200f);
-		Destroy(Temporary_laser_Handler, 1.65f);
+		Destroy(Temporary_laser_Handler, 1.5f);
 	}
 }

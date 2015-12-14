@@ -11,7 +11,10 @@ public class traps2 : MonoBehaviour
 	{
 		InvokeRepeating("shootLaser",6, 5.0F);
 	}
-	
+	void OnCollisionEnter(Collision col){
+		if (col.gameObject.layer == 8)
+			Destroy (gameObject);
+	}
 	void shootLaser(){
 		GameObject Temporary_laser_Handler;
 		Temporary_laser_Handler = Instantiate(laser,laser_Emitter.transform.position,laser_Emitter.transform.rotation) as GameObject;
