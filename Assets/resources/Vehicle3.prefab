@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 489358}
   - 111: {fileID: 11118016}
   - 114: {fileID: 11484758}
-  - 54: {fileID: 5433594}
   - 136: {fileID: 13648376}
+  - 54: {fileID: 5475764}
   m_Layer: 0
   m_Name: Vehicle3
   m_TagString: Untagged
@@ -153,17 +153,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170672}
   m_Mesh: {fileID: 4300006, guid: a97bdcf094fff104d9f67b004b505dd0, type: 3}
---- !u!54 &5433594
+--- !u!54 &5475764
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131496}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 200
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -221,6 +221,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
