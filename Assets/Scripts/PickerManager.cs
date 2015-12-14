@@ -97,13 +97,13 @@ public class PickerManager : MonoBehaviour {
 			if (Input.GetButton("j2Fire1")) {
 				Debug.Log("First controller is keyboard");
 				mPlayerOnePrefix = "j2";
-				mPlayerTwoPrefix = "j";
+				mPlayerTwoPrefix = "j1";
 				Destroy(GameObject.Find("PlayerSelectionDesc"));
 				StartCoroutine(WaitForStartGame());
 				break;
-			} else if (Input.GetButton("jFire1")) {
+			} else if (Input.GetButton("j1Fire1")) {
 				Debug.Log("First controller is joystick");
-				mPlayerOnePrefix = "j";
+				mPlayerOnePrefix = "j1";
 				mPlayerTwoPrefix = "j2";
 				Destroy(GameObject.Find("PlayerSelectionDesc"));
 				StartCoroutine(WaitForStartGame());
