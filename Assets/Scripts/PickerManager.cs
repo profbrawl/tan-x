@@ -32,7 +32,7 @@ public class PickerManager : MonoBehaviour {
 			Destroy(gameObject);
 		}
 
-//		StartCoroutine(WaitForSelector());
+		StartCoroutine(WaitForSelector());
 
 		mCharacters[0, 0] = sphere;
 		mCharacters[1, 0]= cylinder;
