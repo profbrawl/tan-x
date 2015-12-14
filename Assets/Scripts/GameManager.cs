@@ -65,10 +65,16 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject getVehicle(int value) {
 		switch(value) {
-			case 0:
-				return (GameObject)Resources.Load("Player_TypeA");
 			case 1:
-				return (GameObject)Resources.Load("Player_TypeB");
+				return (GameObject)Resources.Load("Vehicle1");
+			case 2:
+				return (GameObject)Resources.Load("Vehicle2");
+			case 3:
+				return (GameObject)Resources.Load("Vehicle3");
+			case 4:
+				return (GameObject)Resources.Load("Vehicle4");
+			case 5:
+				return (GameObject)Resources.Load("Vehicle5");
 			default:
 				return null;
 		}

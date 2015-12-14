@@ -27,7 +27,7 @@ public class PickerManager : MonoBehaviour {
 	private string mPlayerTwoPrefix = "";
 	bool mP1InitalSelection = true;
 	bool mP2InitalSelection = true;
-	private int numberOfMaps = 1;
+	private int numberOfMaps = 3;
 
 	private static PickerManager instance = null;
 
