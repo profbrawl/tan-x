@@ -16,8 +16,10 @@ public class PickerManager : MonoBehaviour {
 	public GameObject playerTwoPos;
 
 	private GameObject[,] mCharacters = new GameObject[4, 2];
-	private int mCurrentSelectedHorizontal = -1;
-	private int mCurrentSelectedVertical = 0;
+	private int mP1CurrentSelectedHorizontal = -1;
+	private int mP1CurrentSelectedVertical = 0;
+	private int mP2CurrentSelectedHorizontal = -1;
+	private int mP2CurrentSelectedVertical = 0;
 	private bool mIsP1HAxisInUse = false;
 	private bool mIsP1VAxisInUse = false;
 	private bool mIsP2HAxisInUse = false;
@@ -40,6 +42,24 @@ public class PickerManager : MonoBehaviour {
 		get
 		{
 			return this.mPlayerTwoPrefix;
+		}
+	}
+
+	// width * row + col
+	public int PlayerOneCharacter
+	{
+		get
+		{
+			return 4 * mP1CurrentSelectedHorizontal + mP1CurrentSelectedVertical;
+		}
+	}
+
+	// width * row + col
+	public int PlayerTwoCharacter
+	{
+		get
+		{
+			return 4 * mP2CurrentSelectedHorizontal + mP2CurrentSelectedVertical;
 		}
 	}
 
@@ -119,16 +139,23 @@ public class PickerManager : MonoBehaviour {
 		GameObject playerObject;
 		bool playerVAxisInUse;
 		bool playerHAxisInUse;
+		int playerCurrentSelectedVertical;
+		int playerCurrentSelectedHorizontal;
+
 		if (mPlayerOnePrefix == prefix) {
 			Debug.Log("player ONE is making a move.");
 			playerObject = playerOnePos;
 			playerVAxisInUse = mIsP1VAxisInUse;
 			playerHAxisInUse = mIsP1HAxisInUse;
+			playerCurrentSelectedVertical = mP1CurrentSelectedVertical;
+			playerCurrentSelectedHorizontal = mP1CurrentSelectedHorizontal;
 		} else {
 			Debug.Log("player TWO is making a move.");
 			playerObject = playerTwoPos;
 			playerVAxisInUse = mIsP2VAxisInUse;
 			playerHAxisInUse = mIsP2HAxisInUse;
+			playerCurrentSelectedVertical = mP2CurrentSelectedVertical;
+			playerCurrentSelectedHorizontal = mP2CurrentSelectedHorizontal;
 		}
 
 		float verticalAxis = Input.GetAxisRaw(prefix + "Vertical");
@@ -138,32 +165,32 @@ public class PickerManager : MonoBehaviour {
 			if (initalSelection) {
 				if (playerVAxisInUse == false) { 
 					playerVAxisInUse = true;
-					mCurrentSelectedVertical = 0;
-					animateForward(playerObject, 0, mCurrentSelectedVertical);
+					playerCurrentSelectedVertical = 0;
+					animateForward(playerObject, 0, playerCurrentSelectedVertical);
 					initalSelection = false;
 				}
 			} else {
-				if (playerVAxisInUse == false && mCurrentSelectedVertical != 0) {
+				if (playerVAxisInUse == false && playerCurrentSelectedVertical != 0) {
 					playerVAxisInUse = true;
-					animateBackward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
-					mCurrentSelectedVertical = 0;
-					animateForward(playerObject, mCurrentSelectedHorizontal, mCurrentSelectedVertical);
+					animateBackward(playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
+					playerCurrentSelectedVertical = 0;
+					animateForward(playerObject, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 				}
 			}
 		} else { // We move our controller joystick up
 			if (initalSelection) {
 				if (playerVAxisInUse == false) { 
 					playerVAxisInUse = true;
-					mCurrentSelectedVertical = 1;
-					animateForward(playerObject, 0, mCurrentSelectedVertical);
+					playerCurrentSelectedVertical = 1;
+					animateForward(playerObject, 0, playerCurrentSelectedVertical);
 					initalSelection = false;
 				}
 			} else {
-				if (playerVAxisInUse == false && mCurrentSelectedVertical != 1) {
+				if (playerVAxisInUse == false && playerCurrentSelectedVertical != 1) {
 					playerVAxisInUse = true;
-					animateBackward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
-					mCurrentSelectedVertical = 1;
-					animateForward(playerObject, mCurrentSelectedHorizontal, mCurrentSelectedVertical);
+					animateBackward(playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
+					playerCurrentSelectedVertical = 1;
+					animateForward(playerObject, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 				}
 			}
 		}
@@ -175,16 +202,16 @@ public class PickerManager : MonoBehaviour {
 			if (!initalSelection) {
 				if (playerHAxisInUse == false) {
 					playerHAxisInUse = true;
-					animateBackward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
-					int nextMovePosition = (((mCurrentSelectedHorizontal - 1) % 4) + 4) % 4;
-					animateForward(playerObject, nextMovePosition, mCurrentSelectedVertical);
-					mCurrentSelectedHorizontal = nextMovePosition;
+					animateBackward(playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
+					int nextMovePosition = (((playerCurrentSelectedHorizontal - 1) % 4) + 4) % 4;
+					animateForward(playerObject, nextMovePosition, playerCurrentSelectedVertical);
+					playerCurrentSelectedHorizontal = nextMovePosition;
 				}
 			} else {
 				if (playerHAxisInUse == false) {
 					playerHAxisInUse = true;
-					mCurrentSelectedHorizontal = 3;
-					animateForward(playerObject, mCurrentSelectedHorizontal, mCurrentSelectedVertical);
+					playerCurrentSelectedHorizontal = 3;
+					animateForward(playerObject, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 					initalSelection = false;
 				}
 			}
@@ -192,16 +219,16 @@ public class PickerManager : MonoBehaviour {
 			if (!initalSelection) {
 				if (playerHAxisInUse == false) {
 					playerHAxisInUse = true;
-					animateBackward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
-					int nextMovePosition = (mCurrentSelectedHorizontal + 1) % 4;
-					animateForward(playerObject, nextMovePosition, mCurrentSelectedVertical);
-					mCurrentSelectedHorizontal = nextMovePosition;
+					animateBackward(playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
+					int nextMovePosition = (playerCurrentSelectedHorizontal + 1) % 4;
+					animateForward(playerObject, nextMovePosition, playerCurrentSelectedVertical);
+					playerCurrentSelectedHorizontal = nextMovePosition;
 				}
 			} else { // Bring left most character forward
 				if (playerHAxisInUse == false) {
 					playerHAxisInUse = true;
-					mCurrentSelectedHorizontal = 0;
-					animateForward(playerObject, mCurrentSelectedHorizontal, mCurrentSelectedVertical);
+					playerCurrentSelectedHorizontal = 0;
+					animateForward(playerObject, playerCurrentSelectedHorizontal, playerCurrentSelectedVertical);
 					//mCharacters[0].GetComponent<Animation>().Blend("Sphere_SelectedForward");
 					initalSelection = false;
 				}
@@ -217,7 +244,8 @@ public class PickerManager : MonoBehaviour {
 	}
 
 	private void animateBackward(int xPos, int yPos) {
-		float vecYPosition = mCurrentSelectedVertical == 0 ? 0f : 3f;
+		//TODO: mP1CurrentSelectedVertical doesn't look right, but this is what I'm using for now.
+		float vecYPosition = mP1CurrentSelectedVertical == 0 ? 0f : 3f;
 		switch(xPos) {
 			case 0:
 				StartCoroutine(MoveObject(getTransform(xPos, yPos), getTransform(xPos, yPos).position,
