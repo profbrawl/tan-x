@@ -94,9 +94,9 @@ public class PickerManager : MonoBehaviour {
 
 	IEnumerator WaitForSelector() {
 		while (true) {
-			if (Input.GetButton("kFire1")) {
+			if (Input.GetButton("j2Fire1")) {
 				Debug.Log("First controller is keyboard");
-				mPlayerOnePrefix = "k";
+				mPlayerOnePrefix = "j2";
 				mPlayerTwoPrefix = "j";
 				Destroy(GameObject.Find("PlayerSelectionDesc"));
 				StartCoroutine(WaitForStartGame());
@@ -104,7 +104,7 @@ public class PickerManager : MonoBehaviour {
 			} else if (Input.GetButton("jFire1")) {
 				Debug.Log("First controller is joystick");
 				mPlayerOnePrefix = "j";
-				mPlayerTwoPrefix = "k";
+				mPlayerTwoPrefix = "j2";
 				Destroy(GameObject.Find("PlayerSelectionDesc"));
 				StartCoroutine(WaitForStartGame());
 				break;
