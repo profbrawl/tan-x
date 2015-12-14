@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class traps : MonoBehaviour
+public class traps3 : MonoBehaviour
 {
 	public GameObject laser_Emitter;
 	public GameObject laser;
-
-
+	
+	
 	void Start ()
 	{
-		InvokeRepeating("shootLaser", 5, 5.0F);
+		InvokeRepeating("shootLaser",5, 5.0F);
 	}
-
 	void OnCollisionEnter(Collision col){
-		if (col.gameObject.layer == 8) {
+		if (col.gameObject.layer == 8)
 			Destroy (gameObject);
 			Destroy(col.gameObject);
-		}
 	}
 	void shootLaser(){
 		GameObject Temporary_laser_Handler;
@@ -24,6 +22,6 @@ public class traps : MonoBehaviour
 		Rigidbody Temporary_RigidBody;
 		Temporary_RigidBody = Temporary_laser_Handler.GetComponent<Rigidbody>();
 		Temporary_RigidBody.AddForce(transform.forward *200f);
-		Destroy(Temporary_laser_Handler, 1.75f);
+		Destroy(Temporary_laser_Handler, 1.5f);
 	}
 }
