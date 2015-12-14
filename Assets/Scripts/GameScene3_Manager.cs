@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GameScene3_Manager : GameManager {
 	
@@ -19,6 +20,8 @@ public class GameScene3_Manager : GameManager {
 
 		SetupPlayer1 ();
 		SetupPlayer2 ();
+        SetupPowerUpLocations();
+        InvokeRepeating("SpawnPowerup", 5f, 10f);
 	}    
 	
 	void Update () {        
@@ -52,4 +55,13 @@ public class GameScene3_Manager : GameManager {
 		player2.transform.position = new Vector3 (20.85f, 0f, -16.625f);
 		player2.transform.rotation = new Quaternion (0.0f, 0.3f, 0.0f, 1.0f);
 	}
+
+    void SetupPowerUpLocations()
+    {
+        this.powerUpSpots = new List<PowerUpLocation>();
+        this.powerUpSpots.Add(new PowerUpLocation(-8.5f, 0.8f, 8.5f));
+        this.powerUpSpots.Add(new PowerUpLocation(-8.5f, 0.8f, -8.5f));
+        this.powerUpSpots.Add(new PowerUpLocation(8.5f, 0.8f, -8.5f));
+        this.powerUpSpots.Add(new PowerUpLocation(8.5f, 0.8f, 8.5f));        
+    }
 }
