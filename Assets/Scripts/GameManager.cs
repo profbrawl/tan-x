@@ -22,17 +22,17 @@ public class GameManager : MonoBehaviour {
     }
 
 	public void CheckGameOver() {
-        Text winnerText = gameOverText.GetComponent("Text") as Text;
-
-        if (playerOneScore == WIN_SCORE) {
-            winnerText.text = "Player 1 Wins!";
-            gameOverText.SetActive(true);
-            PauseGame();  
-        } else if(playerTwoScore == WIN_SCORE) {
-            winnerText.text = "Player 2 Wins!";
-            gameOverText.SetActive(true);
-            PauseGame();
-        }
+//        Text winnerText = gameOverText.GetComponent("Text") as Text;
+//
+//        if (playerOneScore == WIN_SCORE) {
+//            winnerText.text = "Player 1 Wins!";
+//            gameOverText.SetActive(true);
+//            PauseGame();  
+//        } else if(playerTwoScore == WIN_SCORE) {
+//            winnerText.text = "Player 2 Wins!";
+//            gameOverText.SetActive(true);
+//            PauseGame();
+//        }
     }
 
 	public void PauseGame() {
@@ -65,15 +65,15 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject getVehicle(int value) {
 		switch(value) {
-			case 1:
+			case 0:
 				return (GameObject)Resources.Load("Vehicle1");
-			case 2:
+			case 1:
 				return (GameObject)Resources.Load("Vehicle2");
-			case 3:
+			case 2:
 				return (GameObject)Resources.Load("Vehicle3");
-			case 4:
+			case 3:
 				return (GameObject)Resources.Load("Vehicle4");
-			case 5:
+			case 4:
 				return (GameObject)Resources.Load("Vehicle5");
 			default:
 				return null;

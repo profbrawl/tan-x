@@ -19,11 +19,18 @@ public class GameScene1_Manager : GameManager {
 
 		SetupPlayer1 ();
 		SetupPlayer2 ();
-	}    
+	}
+
+	void Start() {
+		Debug.Log("player 1: " + PickerManager.getInstance().PlayerOne);
+		player1.GetComponent<Vehicle>().playerPrefix = PickerManager.getInstance().PlayerOne;
+		Debug.Log("player 2: " + PickerManager.getInstance().PlayerTwo);
+		player2.GetComponent<Vehicle>().playerPrefix = PickerManager.getInstance().PlayerTwo;
+	}
 	
 	void Update () {        
         if(!gamePaused) {
-			player1.GetComponent<Vehicle>().getHealth();
+//			player1.GetComponent<Vehicle>().getHealth();
 			if (player1.GetComponent<Vehicle>().getHealth() <= 0) {
 				AddToScore(2);
 				Destroy(player1);
@@ -39,11 +46,11 @@ public class GameScene1_Manager : GameManager {
 
 	void SetupPlayer1() {
 		Debug.Log("character: " + PickerManager.getInstance().PlayerOneCharacter);
-		player1 = Instantiate(getVehicle(PickerManager.getInstance().PlayerOneCharacter % 8));
+		player1 = Instantiate(getVehicle(PickerManager.getInstance().PlayerOneCharacter % 5));
 	}
 
 	void SetupPlayer2() {
 		Debug.Log("character: " + PickerManager.getInstance().PlayerTwoCharacter);
-		player2 = Instantiate(getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 8));
+		player2 = Instantiate(getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 5));
 	}
 }

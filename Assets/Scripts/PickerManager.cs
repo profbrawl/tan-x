@@ -27,7 +27,7 @@ public class PickerManager : MonoBehaviour {
 	private string mPlayerTwoPrefix = "";
 	bool mP1InitalSelection = true;
 	bool mP2InitalSelection = true;
-	private int numberOfMaps = 3;
+	private int numberOfMaps = 1;
 
 	private static PickerManager instance = null;
 
@@ -135,6 +135,8 @@ public class PickerManager : MonoBehaviour {
 		if(mPlayerOnePrefix.Length != 0 && mPlayerTwoPrefix.Length != 0) {
 			player1Controller();
 			player2Controller();
+			Debug.Log("player 1 character: " + (2 * mP1CurrentSelectedVertical + mP1CurrentSelectedHorizontal));
+			Debug.Log("player 2 character: " + (2 * mP2CurrentSelectedVertical + mP2CurrentSelectedHorizontal));
 		}
 	}
 
