@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
-	
+
     private int playerOneScore = 0;
-    private int playerTwoScore = 0;    
+    private int playerTwoScore = 0;
     protected List<PowerUpLocation> powerUpSpots;
 	//public Text playerOneText;
 	//public Text playerTwoText;
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
         if (playerOneScore == WIN_SCORE) {
       //      winnerText.text = "Player 1 Wins!";
         //    gameOverText.SetActive(true);
-            PauseGame();  
+            PauseGame();
         } else if(playerTwoScore == WIN_SCORE) {
           //  winnerText.text = "Player 2 Wins!";
            // gameOverText.SetActive(true);
@@ -68,15 +68,15 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject getVehicle(int value) {
 		switch(value) {
-			case 1:
+			case 0:
 				return (GameObject)Resources.Load("Vehicle1");
-			case 2:
+			case 1:
 				return (GameObject)Resources.Load("Vehicle2");
-			case 3:
+			case 2:
 				return (GameObject)Resources.Load("Vehicle3");
-			case 4:
+			case 3:
 				return (GameObject)Resources.Load("Vehicle4");
-			case 5:
+			case 4:
 				return (GameObject)Resources.Load("Vehicle5");
 			default:
 				return null;
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour {
             Instantiate(getPowerUp(randomizer.Next(1,3)), new Vector3(locationToSpawn.X, locationToSpawn.Y, locationToSpawn.Z), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
             locationToSpawn.Occupied = true;
         }
-        
+
     }
 
 }
