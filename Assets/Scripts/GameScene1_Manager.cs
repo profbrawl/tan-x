@@ -25,10 +25,29 @@ public class GameScene1_Manager : GameManager {
 	}
 
 	void Start() {
-		Debug.Log("player 1: " + PickerManager.getInstance().PlayerOne);
-		player1.GetComponent<Vehicle>().playerPrefix = PickerManager.getInstance().PlayerOne;
-		Debug.Log("player 2: " + PickerManager.getInstance().PlayerTwo);
-		player2.GetComponent<Vehicle>().playerPrefix = PickerManager.getInstance().PlayerTwo;
+        string playerOne = "";
+        if (PickerManager.getInstance() != null)
+            playerOne = PickerManager.getInstance().PlayerOne;
+        if (playerOne.Length != 0)
+        {
+            Debug.Log("player 1: " + PickerManager.getInstance().PlayerOne);
+            player1.GetComponent<Vehicle>().playerPrefix = playerOne;
+        } else
+        {
+            player1.GetComponent<Vehicle>().playerPrefix = "j1";
+        }
+        string playerTwo = "";
+        if (PickerManager.getInstance() != null)
+            playerTwo = PickerManager.getInstance().PlayerTwo;
+        if (playerTwo.Length != 0)
+        {
+            Debug.Log("player 2: " + PickerManager.getInstance().PlayerTwo);
+            player2.GetComponent<Vehicle>().playerPrefix = PickerManager.getInstance().PlayerTwo;
+        } else
+        {
+            player2.GetComponent<Vehicle>().playerPrefix = "j2";
+        }
+		
 	}
 
 	void Update () {
@@ -49,21 +68,40 @@ public class GameScene1_Manager : GameManager {
 	}
 
 	void SetupPlayer1() {
-		//player1 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerOneCharacter % 8));
-//		player1 = Instantiate(getVehicle (4));
-//		player1.transform.position = new Vector3 (-29.84f, 0f, -16.83f);
-//		player1.transform.rotation = new Quaternion (0.0f, 0.3f, 0.0f, 1.0f);
-		Debug.Log("character: " + PickerManager.getInstance().PlayerOneCharacter);
-		player1 = Instantiate(getVehicle(PickerManager.getInstance().PlayerOneCharacter % 5));
+        //player1 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerOneCharacter % 8));
+        int selectedVehicle = -1;
+        if (PickerManager.getInstance() != null) 
+            selectedVehicle = PickerManager.getInstance().PlayerOneCharacter % 5;
+        if (selectedVehicle < 0)
+        {
+            player1 = Instantiate(getVehicle(3));
+            //player1.transform.position = new Vector3(-29.84f, 0f, -16.83f);
+            //player1.transform.rotation = new Quaternion(0.0f, 0.3f, 0.0f, 1.0f);
+        } else
+        {
+            Debug.Log("character: " + PickerManager.getInstance().PlayerOneCharacter);
+            player1 = Instantiate(getVehicle(selectedVehicle));
+        }
+		
 	}
 
 	void SetupPlayer2() {
-		//player2 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 8));
-//		player2 = Instantiate (getVehicle (5));
-//		player2.transform.position = new Vector3 (20.8f, 0f, 16.84f);
-//		player2.transform.rotation = new Quaternion (0.0f, 0.3f, 0.0f, 1.0f);
-		Debug.Log("character: " + PickerManager.getInstance().PlayerTwoCharacter);
-		player2 = Instantiate(getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 5));
+        //player2 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 8));
+
+        int selectedVehicle = -1;
+        if (PickerManager.getInstance() != null)
+            selectedVehicle = PickerManager.getInstance().PlayerTwoCharacter % 5;
+        if (selectedVehicle < 0)
+        {
+            player2 = Instantiate(getVehicle(4));
+            //player2.transform.position = new Vector3(20.8f, 0f, 16.84f);
+            //player2.transform.rotation = new Quaternion(0.0f, 0.3f, 0.0f, 1.0f);
+        }
+        else
+        {
+            Debug.Log("character: " + PickerManager.getInstance().PlayerTwoCharacter);
+            player2 = Instantiate(getVehicle(selectedVehicle));
+        }
 	}
 
     void SetupPowerUpLocations()
