@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PickerManager : MonoBehaviour {
 
-	bool initalSelection = true;
 	public GameObject sphere;
 	public GameObject cylinder;
 	public GameObject capsule;
@@ -16,13 +15,59 @@ public class PickerManager : MonoBehaviour {
 	public GameObject playerTwoPos;
 
 	private GameObject[,] mCharacters = new GameObject[4, 2];
-	private int mCurrentSelectedHorizontal = -1;
-	private int mCurrentSelectedVertical = 0;
-	private bool mIsHAxisInUse = false;
-	private bool mIsVAxisInUse = false;
-	private string mController = "j";
+	private int mP1CurrentSelectedHorizontal = -1;
+	private int mP1CurrentSelectedVertical = 0;
+	private int mP2CurrentSelectedHorizontal = -1;
+	private int mP2CurrentSelectedVertical = 0;
+	private bool mIsP1HAxisInUse = false;
+	private bool mIsP1VAxisInUse = false;
+	private bool mIsP2HAxisInUse = false;
+	private bool mIsP2VAxisInUse = false;
+	private string mPlayerOnePrefix = "";
+	private string mPlayerTwoPrefix = "";
+	bool mP1InitalSelection = true;
+	bool mP2InitalSelection = true;
+	private int numberOfMaps = 3;
 
 	private static PickerManager instance = null;
+
+	public string PlayerOne
+	{
+		get
+		{
+			return this.mPlayerOnePrefix;
+		}
+	}
+
+	public string PlayerTwo
+	{
+		get
+		{
+			return this.mPlayerTwoPrefix;
+		}
+	}
+
+	// width * row + col
+	public int PlayerOneCharacter
+	{
+		get
+		{
+			return 2 * mP1CurrentSelectedVertical + mP1CurrentSelectedHorizontal;
+		}
+	}
+
+	// width * row + col
+	public int PlayerTwoCharacter
+	{
+		get
+		{
+			return 2 * mP2CurrentSelectedVertical + mP2CurrentSelectedHorizontal;
+		}
+	}
+
+	public static PickerManager getInstance() {
+		return instance;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -43,23 +88,41 @@ public class PickerManager : MonoBehaviour {
 		mCharacters[2, 1] = sphere1;
 		mCharacters[3, 1]= cylinder1;
 
-//		if (Input.GetButton("Jump"))
-//			mController = "k";
-
-//		else if (Input.GetButton("jSubmit"))
-//			mController = "j";
+//		StartCoroutine(playerController(mPlayerOnePrefix));
+//		StartCoroutine(playerController(mPlayerTwoPrefix));
 	}
 
 	IEnumerator WaitForSelector() {
 		while (true) {
-			if (Input.GetButton("Jump")) {
-				Debug.Log("Main controller is keyboard");
-				mController = "k";
+			if (Input.GetButton("kFire1")) {
+				Debug.Log("First controller is keyboard");
+				mPlayerOnePrefix = "k";
+				mPlayerTwoPrefix = "j";
+				Destroy(GameObject.Find("PlayerSelectionDesc"));
+				StartCoroutine(WaitForStartGame());
 				break;
-			} else if (Input.GetButton("jSubmit")) {
-				Debug.Log("Main controller is joystick");
-				mController = "j";
+			} else if (Input.GetButton("jFire1")) {
+				Debug.Log("First controller is joystick");
+				mPlayerOnePrefix = "j";
+				mPlayerTwoPrefix = "k";
+				Destroy(GameObject.Find("PlayerSelectionDesc"));
+				StartCoroutine(WaitForStartGame());
 				break;
+			} else {
+				yield return null;
+			}
+		}
+	}
+
+	IEnumerator WaitForStartGame() {
+		while (true) {
+			if (mPlayerOnePrefix.Length != 0) {
+				if (Input.GetButton(mPlayerOnePrefix + "Submit")) {
+					Application.LoadLevel("GameScene_" + Random.Range(1, numberOfMaps + 1));
+					break;
+				} else {
+					yield return null;
+				}
 			} else {
 				yield return null;
 			}
@@ -69,100 +132,248 @@ public class PickerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		float verticalAxis = Input.GetAxisRaw(mController + "Vertical");
+		if(mPlayerOnePrefix.Length != 0 && mPlayerTwoPrefix.Length != 0) {
+			player1Controller();
+			player2Controller();
+		}
+	}
+
+	private void player1Controller() {
+//		GameObject playerObject;
+//		bool playerVAxisInUse;
+//		bool playerHAxisInUse;
+//		bool playerInitalSelection;
+//		int playerCurrentSelectedVertical;
+//		int playerCurrentSelectedHorizontal;
+//
+//		if (mPlayerOnePrefix == prefix) {
+//			Debug.Log("player ONE is making a move.");
+//			playerObject = playerOnePos;
+//			playerVAxisInUse = mIsP1VAxisInUse;
+//			playerHAxisInUse = mIsP1HAxisInUse;
+//			playerInitalSelection = mP1InitalSelection;
+//			playerCurrentSelectedVertical = mP1CurrentSelectedVertical;
+//			playerCurrentSelectedHorizontal = mP1CurrentSelectedHorizontal;
+//		} else {
+//			Debug.Log("player TWO is making a move.");
+//			playerObject = playerTwoPos;
+//			playerVAxisInUse = mIsP2VAxisInUse;
+//			playerHAxisInUse = mIsP2HAxisInUse;
+//			playerInitalSelection = mP2InitalSelection;
+//			playerCurrentSelectedVertical = mP2CurrentSelectedVertical;
+//			playerCurrentSelectedHorizontal = mP2CurrentSelectedHorizontal;
+//		}
+//
+//		Debug.Log(
+//			"Player " + prefix + ":\n" +
+//			"\t playerVAxisInUse: " + playerVAxisInUse + ":\n" +
+//			"\t playerHAxisInUse: " + playerHAxisInUse + ":\n" +
+//			"\t playerInitalSelection: " + playerInitalSelection + ":\n" +
+//			"\t playerCurrentSelectedVertical: " + playerCurrentSelectedVertical + ":\n" +
+//			"\t playerCurrentSelectedHorizontal: " + playerCurrentSelectedHorizontal
+//		);
+
+		float verticalAxis = Input.GetAxisRaw(mPlayerOnePrefix + "Vertical");
 		if (verticalAxis == 0) {
-			mIsVAxisInUse = false;
+			mIsP1VAxisInUse = false;
 		} else if (verticalAxis < 0) { // We move our controller joystick down
-			if (initalSelection) {
-				if (mIsVAxisInUse == false) { 
-					mIsVAxisInUse = true;
-					mCurrentSelectedVertical = 0;
-					animateForward(0, mCurrentSelectedVertical);
-					initalSelection = false;
+			if (mP1InitalSelection) {
+				if (mIsP1VAxisInUse == false) { 
+					mIsP1VAxisInUse = true;
+					mP1CurrentSelectedVertical = 0;
+					animateForward(playerOnePos, 0, mP1CurrentSelectedVertical);
+					mP1InitalSelection = false;
 				}
 			} else {
-				if (mIsVAxisInUse == false && mCurrentSelectedVertical != 0) {
-					mIsVAxisInUse = true;
-					animateBackward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
-					mCurrentSelectedVertical = 0;
-					animateForward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
+				if (mIsP1VAxisInUse == false && mP1CurrentSelectedVertical != 0) {
+					mIsP1VAxisInUse = true;
+					animateBackward(mP1CurrentSelectedVertical, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
+					mP1CurrentSelectedVertical = 0;
+					animateForward(playerOnePos, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
 				}
 			}
 		} else { // We move our controller joystick up
-			if (initalSelection) {
-				if (mIsVAxisInUse == false) { 
-					mIsVAxisInUse = true;
-					mCurrentSelectedVertical = 1;
-					animateForward(0, mCurrentSelectedVertical);
-					initalSelection = false;
+			if (mP1InitalSelection) {
+				if (mIsP1VAxisInUse == false) { 
+					mIsP1VAxisInUse = true;
+					mP1CurrentSelectedVertical = 1;
+					animateForward(playerOnePos, 0, mP1CurrentSelectedVertical);
+					mP1InitalSelection = false;
 				}
 			} else {
-				if (mIsVAxisInUse == false && mCurrentSelectedVertical != 1) {
-					mIsVAxisInUse = true;
-					animateBackward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
-					mCurrentSelectedVertical = 1;
-					animateForward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
+				if (mIsP1VAxisInUse == false && mP1CurrentSelectedVertical != 1) {
+					mIsP1VAxisInUse = true;
+					animateBackward(mP1CurrentSelectedVertical, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
+					mP1CurrentSelectedVertical = 1;
+					animateForward(playerOnePos, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
 				}
 			}
 		}
 
-		float horizontalAxis = Input.GetAxisRaw(mController + "Horizontal");
+		float horizontalAxis = Input.GetAxisRaw(mPlayerOnePrefix + "Horizontal");
 		if (horizontalAxis == 0) {
-			mIsHAxisInUse = false;
+			mIsP1HAxisInUse = false;
 		} else if(horizontalAxis < 0) { // We moved our controller joystick left
-			if (!initalSelection) {
-				if (mIsHAxisInUse == false) {
-					mIsHAxisInUse = true;
-					animateBackward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
-					int nextMovePosition = (((mCurrentSelectedHorizontal - 1) % 4) + 4) % 4;
-					animateForward(nextMovePosition, mCurrentSelectedVertical);
-					mCurrentSelectedHorizontal = nextMovePosition;
+			if (!mP1InitalSelection) {
+				if (mIsP1HAxisInUse == false) {
+					mIsP1HAxisInUse = true;
+					animateBackward(mP1CurrentSelectedVertical, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
+					int nextMovePosition = (((mP1CurrentSelectedHorizontal - 1) % 4) + 4) % 4;
+					animateForward(playerOnePos, nextMovePosition, mP1CurrentSelectedVertical);
+					mP1CurrentSelectedHorizontal = nextMovePosition;
 				}
 			} else {
-				if (mIsHAxisInUse == false) {
-					mIsHAxisInUse = true;
-					mCurrentSelectedHorizontal = 3;
-					animateForward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
-					initalSelection = false;
+				if (mIsP1HAxisInUse == false) {
+					mIsP1HAxisInUse = true;
+					mP1CurrentSelectedHorizontal = 3;
+					animateForward(playerOnePos, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
+					mP1InitalSelection = false;
 				}
 			}
 		} else { // We moved our controller joystick right
-			if (!initalSelection) {
-				if (mIsHAxisInUse == false) {
-					mIsHAxisInUse = true;
-					animateBackward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
-					int nextMovePosition = (mCurrentSelectedHorizontal + 1) % 4;
-					animateForward(nextMovePosition, mCurrentSelectedVertical);
-					mCurrentSelectedHorizontal = nextMovePosition;
+			if (!mP1InitalSelection) {
+				if (mIsP1HAxisInUse == false) {
+					mIsP1HAxisInUse = true;
+					animateBackward(mP1CurrentSelectedVertical, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
+					int nextMovePosition = (mP1CurrentSelectedHorizontal + 1) % 4;
+					animateForward(playerOnePos, nextMovePosition, mP1CurrentSelectedVertical);
+					mP1CurrentSelectedHorizontal = nextMovePosition;
 				}
 			} else { // Bring left most character forward
-				if (mIsHAxisInUse == false) {
-					mIsHAxisInUse = true;
-					mCurrentSelectedHorizontal = 0;
-					animateForward(mCurrentSelectedHorizontal, mCurrentSelectedVertical);
+				if (mIsP1HAxisInUse == false) {
+					mIsP1HAxisInUse = true;
+					mP1CurrentSelectedHorizontal = 0;
+					animateForward(playerOnePos, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
 					//mCharacters[0].GetComponent<Animation>().Blend("Sphere_SelectedForward");
-					initalSelection = false;
+					mP1InitalSelection = false;
+				}
+			}
+		}
+	}
+
+	private void player2Controller() {
+//		GameObject playerObject;
+//		bool playerVAxisInUse;
+//		bool playerHAxisInUse;
+//		bool playerInitalSelection;
+//		int playerCurrentSelectedVertical;
+//		int playerCurrentSelectedHorizontal;
+//
+//		if (mPlayerOnePrefix == prefix) {
+//			Debug.Log("player ONE is making a move.");
+//			playerObject = playerOnePos;
+//			playerVAxisInUse = mIsP1VAxisInUse;
+//			playerHAxisInUse = mIsP1HAxisInUse;
+//			playerInitalSelection = mP1InitalSelection;
+//			playerCurrentSelectedVertical = mP1CurrentSelectedVertical;
+//			playerCurrentSelectedHorizontal = mP1CurrentSelectedHorizontal;
+//		} else {
+//			Debug.Log("player TWO is making a move.");
+//			playerObject = playerTwoPos;
+//			playerVAxisInUse = mIsP2VAxisInUse;
+//			playerHAxisInUse = mIsP2HAxisInUse;
+//			playerInitalSelection = mP2InitalSelection;
+//			playerCurrentSelectedVertical = mP2CurrentSelectedVertical;
+//			playerCurrentSelectedHorizontal = mP2CurrentSelectedHorizontal;
+//		}
+//
+//		Debug.Log(
+//			"Player " + prefix + ":\n" +
+//			"\t playerVAxisInUse: " + playerVAxisInUse + ":\n" +
+//			"\t playerHAxisInUse: " + playerHAxisInUse + ":\n" +
+//			"\t playerInitalSelection: " + playerInitalSelection + ":\n" +
+//			"\t playerCurrentSelectedVertical: " + playerCurrentSelectedVertical + ":\n" +
+//			"\t playerCurrentSelectedHorizontal: " + playerCurrentSelectedHorizontal
+//		);
+
+		float verticalAxis = Input.GetAxisRaw(mPlayerTwoPrefix + "Vertical");
+		if (verticalAxis == 0) {
+			mIsP2VAxisInUse = false;
+		} else if (verticalAxis < 0) { // We move our controller joystick down
+			if (mP2InitalSelection) {
+				if (mIsP2VAxisInUse == false) { 
+					mIsP2VAxisInUse = true;
+					mP2CurrentSelectedVertical = 0;
+					animateForward(playerTwoPos, 0, mP2CurrentSelectedVertical);
+					mP2InitalSelection = false;
+				}
+			} else {
+				if (mIsP2VAxisInUse == false && mP2CurrentSelectedVertical != 0) {
+					mIsP2VAxisInUse = true;
+					animateBackward(mP2CurrentSelectedVertical, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
+					mP2CurrentSelectedVertical = 0;
+					animateForward(playerTwoPos, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
+				}
+			}
+		} else { // We move our controller joystick up
+			if (mP2InitalSelection) {
+				if (mIsP2VAxisInUse == false) { 
+					mIsP2VAxisInUse = true;
+					mP2CurrentSelectedVertical = 1;
+					animateForward(playerTwoPos, 0, mP2CurrentSelectedVertical);
+					mP2InitalSelection = false;
+				}
+			} else {
+				if (mIsP2VAxisInUse == false && mP2CurrentSelectedVertical != 1) {
+					mIsP2VAxisInUse = true;
+					animateBackward(mP2CurrentSelectedVertical, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
+					mP2CurrentSelectedVertical = 1;
+					animateForward(playerTwoPos, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
 				}
 			}
 		}
 
-		if (Input.GetButtonDown(mController + "Submit")) {
-			Debug.Log("Submit button hit");
-			//TODO Pass the selection to the GameScene
-			Application.LoadLevel("GameScene");
+		float horizontalAxis = Input.GetAxisRaw(mPlayerTwoPrefix + "Horizontal");
+		if (horizontalAxis == 0) {
+			mIsP2HAxisInUse = false;
+		} else if(horizontalAxis < 0) { // We moved our controller joystick left
+			if (!mP2InitalSelection) {
+				if (mIsP2HAxisInUse == false) {
+					mIsP2HAxisInUse = true;
+					animateBackward(mP2CurrentSelectedVertical, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
+					int nextMovePosition = (((mP2CurrentSelectedHorizontal - 1) % 4) + 4) % 4;
+					animateForward(playerTwoPos, nextMovePosition, mP2CurrentSelectedVertical);
+					mP2CurrentSelectedHorizontal = nextMovePosition;
+				}
+			} else {
+				if (mIsP2HAxisInUse == false) {
+					mIsP2HAxisInUse = true;
+					mP2CurrentSelectedHorizontal = 3;
+					animateForward(playerTwoPos, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
+					mP2InitalSelection = false;
+				}
+			}
+		} else { // We moved our controller joystick right
+			if (!mP2InitalSelection) {
+				if (mIsP2HAxisInUse == false) {
+					mIsP2HAxisInUse = true;
+					animateBackward(mP2CurrentSelectedVertical, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
+					int nextMovePosition = (mP2CurrentSelectedHorizontal + 1) % 4;
+					animateForward(playerTwoPos, nextMovePosition, mP2CurrentSelectedVertical);
+					mP2CurrentSelectedHorizontal = nextMovePosition;
+				}
+			} else { // Bring left most character forward
+				if (mIsP2HAxisInUse == false) {
+					mIsP2HAxisInUse = true;
+					mP2CurrentSelectedHorizontal = 0;
+					animateForward(playerTwoPos, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
+					//mCharacters[0].GetComponent<Animation>().Blend("Sphere_SelectedForward");
+					mP2InitalSelection = false;
+				}
+			}
 		}
-			
 	}
 
-	private void animateForward(int xPos, int yPos) {
+	private void animateForward(GameObject player, int xPos, int yPos) {
 		StartCoroutine(MoveObject(
 			mCharacters[xPos, yPos].transform, 
 			mCharacters[xPos, yPos].transform.position, 
-			playerOnePos.transform.position, 0.2f));
+			player.transform.position, 0.2f));
 	}
 
-	private void animateBackward(int xPos, int yPos) {
-		float vecYPosition = mCurrentSelectedVertical == 0 ? 0f : 3f;
+	private void animateBackward(int selectedVerticalPos, int xPos, int yPos) {
+		//TODO: mP1CurrentSelectedVertical doesn't look right, but this is what I'm using for now.
+		float vecYPosition = selectedVerticalPos == 0 ? 0f : 3f;
 		switch(xPos) {
 			case 0:
 				StartCoroutine(MoveObject(getTransform(xPos, yPos), getTransform(xPos, yPos).position,
