@@ -3,16 +3,20 @@ using System.Collections;
 
 public class Vehicle : MonoBehaviour {
 	
-	private int specialGunCount = 3;
-	public int health = 100;
+	private int specialGunCount;
+	public int health;
 
 	// Temp speeds
 	public float moveSpeed = 4f;
 	public float turnSpeed = 200f;
 	public int shootForce = 400;
 
+	void Start() {
+		specialGunCount = 0;
+		health = 100;
+	}
+
 	void Update () {
-		
 		// Temp controls for testing
 		if(Input.GetKey(KeyCode.UpArrow))
 			transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
@@ -37,9 +41,9 @@ public class Vehicle : MonoBehaviour {
 			laser.transform.position = transform.position + new Vector3(-0.4f, 0, 0);
 			laser.GetComponent<Rigidbody>().AddForce(-transform.forward * shootForce);
 		}
+	}
 
-		if (health == 0) {
-			Destroy (gameObject);
-		}
+	public int getHealth() {
+		return health;
 	}
 }

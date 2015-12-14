@@ -183,17 +183,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 268231998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e95ad35ca12b4f8cb3f44bcf582c019, type: 3}
+  m_Script: {fileID: 11500000, guid: f1a1065795f7f4740a8349b78b531e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfTanks: 1
-  players:
-  - {fileID: 135674, guid: 426385c5373a9491e83f74c889a19c82, type: 2}
-  - {fileID: 130946, guid: 112ac37b2ed6545558b844c3c3a08d4e, type: 2}
   playerOneText: {fileID: 1180799316}
   playerTwoText: {fileID: 2067268762}
   gameOverText: {fileID: 1791628291}
   gamePaused: 0
+  players:
+  - {fileID: 135674, guid: 426385c5373a9491e83f74c889a19c82, type: 2}
+  - {fileID: 130946, guid: 112ac37b2ed6545558b844c3c3a08d4e, type: 2}
 --- !u!4 &268232000
 Transform:
   m_ObjectHideFlags: 0
@@ -378,7 +377,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 268231999}
+      - m_Target: {fileID: 0}
         m_MethodName: Restart_Click
         m_Mode: 1
         m_Arguments:
@@ -1185,7 +1184,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 268231999}
+      - m_Target: {fileID: 0}
         m_MethodName: MainMenu_Click
         m_Mode: 1
         m_Arguments:
