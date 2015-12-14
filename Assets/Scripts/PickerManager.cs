@@ -26,6 +26,7 @@ public class PickerManager : MonoBehaviour {
 	private bool mIsP2VAxisInUse = false;
 	private string mPlayerOnePrefix = "";
 	private string mPlayerTwoPrefix = "";
+	private int numberOfMaps = 1;
 
 	private static PickerManager instance = null;
 
@@ -112,9 +113,7 @@ public class PickerManager : MonoBehaviour {
 		while (true) {
 			if (mPlayerOnePrefix.Length != 0) {
 				if (Input.GetButton(mPlayerOnePrefix + "Submit")) {
-					Debug.Log("Submit button hit");
-					//TODO Pass the selection to the GameScene
-					Application.LoadLevel("GameScene_1");
+					Application.LoadLevel("GameScene_" + Random.Range(1, numberOfMaps + 1));
 					break;
 				} else {
 					yield return null;
@@ -132,7 +131,6 @@ public class PickerManager : MonoBehaviour {
 			playerController(mPlayerOnePrefix);
 			playerController(mPlayerTwoPrefix);
 		}
-			
 	}
 
 	private void playerController(string prefix) {
