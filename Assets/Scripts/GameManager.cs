@@ -8,32 +8,32 @@ public class GameManager : MonoBehaviour {
     private int playerOneScore = 0;
     private int playerTwoScore = 0;    
     protected List<PowerUpLocation> powerUpSpots;
-	public Text playerOneText;
-	public Text playerTwoText;
-	public GameObject gameOverText;
+	//public Text playerOneText;
+	//public Text playerTwoText;
+	//public GameObject gameOverText;
     public bool gamePaused = false;
 	private const int WIN_SCORE = 10;
     private System.Random randomizer = new System.Random();
 
     public void AddToScore(int player) {
         if (player == 1) {
-            playerOneText.text = "Player 1 Kills: " + ++playerOneScore;
+            //playerOneText.text = "Player 1 Kills: " + ++playerOneScore;
         } else {
-            playerTwoText.text = "Player 2 Kills: " + ++playerTwoScore;
+            //playerTwoText.text = "Player 2 Kills: " + ++playerTwoScore;
         }
         CheckGameOver();
     }
 
 	public void CheckGameOver() {
-        Text winnerText = gameOverText.GetComponent("Text") as Text;
+        //Text winnerText = gameOverText.GetComponent("Text") as Text;
 
         if (playerOneScore == WIN_SCORE) {
-            winnerText.text = "Player 1 Wins!";
-            gameOverText.SetActive(true);
+      //      winnerText.text = "Player 1 Wins!";
+        //    gameOverText.SetActive(true);
             PauseGame();  
         } else if(playerTwoScore == WIN_SCORE) {
-            winnerText.text = "Player 2 Wins!";
-            gameOverText.SetActive(true);
+          //  winnerText.text = "Player 2 Wins!";
+           // gameOverText.SetActive(true);
             PauseGame();
         }
     }
