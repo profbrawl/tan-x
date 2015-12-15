@@ -44,7 +44,11 @@ public class GameScene1_Manager : GameManager {
 			}
         }
 		CheckGameOver ();
-	}
+        float distanceBetweenPlayers = Vector3.Distance(player1.transform.position, player2.transform.position);
+        Vector3 midpoint = (player1.transform.position + player2.transform.position) / 2;
+        //((GameObject)GetCamera()).transform.Translate(new Vector3(0, 0 , ) * Time.deltaTime);
+        ((GameObject)GetCamera()).GetComponent<Camera>().transform.LookAt(midpoint);
+    }
 
 	void SetupPlayer1() {
         //player1 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerOneCharacter % 8));

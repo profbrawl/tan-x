@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public bool gamePaused = false;
 	private const int WIN_SCORE = 10;
     private System.Random randomizer = new System.Random();
+    protected GameObject camera;
 
     public void AddToScore(int player) {
         if (player == 1) {
@@ -22,6 +23,11 @@ public class GameManager : MonoBehaviour {
             //playerTwoText.text = "Player 2 Kills: " + ++playerTwoScore;
         }
         CheckGameOver();
+    }
+
+    public GameObject GetCamera()
+    {
+        return GameObject.Find("Main Camera");
     }
 
 	public void CheckGameOver() {
