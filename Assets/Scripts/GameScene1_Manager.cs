@@ -25,28 +25,7 @@ public class GameScene1_Manager : GameManager {
 	}
 
 	void Start() {
-        string playerOne = "";
-        if (PickerManager.getInstance() != null)
-            playerOne = PickerManager.getInstance().PlayerOne;
-        if (playerOne.Length != 0)
-        {
-            Debug.Log("player 1: " + PickerManager.getInstance().PlayerOne);
-            player1.GetComponent<Vehicle>().playerPrefix = playerOne;
-        } else
-        {
-            player1.GetComponent<Vehicle>().playerPrefix = "j1";
-        }
-        string playerTwo = "";
-        if (PickerManager.getInstance() != null)
-            playerTwo = PickerManager.getInstance().PlayerTwo;
-        if (playerTwo.Length != 0)
-        {
-            Debug.Log("player 2: " + PickerManager.getInstance().PlayerTwo);
-            player2.GetComponent<Vehicle>().playerPrefix = PickerManager.getInstance().PlayerTwo;
-        } else
-        {
-            player2.GetComponent<Vehicle>().playerPrefix = "j2";
-        }
+        
 		
 	}
 
@@ -82,12 +61,25 @@ public class GameScene1_Manager : GameManager {
             Debug.Log("character: " + PickerManager.getInstance().PlayerOneCharacter);
             player1 = Instantiate(getVehicle(selectedVehicle));
         }
-		
-	}
 
-	void SetupPlayer2() {
+        string playerOne = "";
+        if (PickerManager.getInstance() != null)
+            playerOne = PickerManager.getInstance().PlayerOne;
+        if (playerOne.Length != 0)
+        {
+            Debug.Log("player 1: " + PickerManager.getInstance().PlayerOne);
+            player1.GetComponent<Vehicle>().playerPrefix = playerOne;
+        }
+        else
+        {
+            player1.GetComponent<Vehicle>().playerPrefix = "j1";
+        }
+
+    }
+
+    void SetupPlayer2() {
         //player2 = Instantiate(instance.getVehicle(PickerManager.getInstance().PlayerTwoCharacter % 8));
-
+        
         int selectedVehicle = -1;
         if (PickerManager.getInstance() != null)
             selectedVehicle = PickerManager.getInstance().PlayerTwoCharacter % 5;
@@ -102,7 +94,20 @@ public class GameScene1_Manager : GameManager {
             Debug.Log("character: " + PickerManager.getInstance().PlayerTwoCharacter);
             player2 = Instantiate(getVehicle(selectedVehicle));
         }
-	}
+
+        string playerTwo = "";
+        if (PickerManager.getInstance() != null)
+            playerTwo = PickerManager.getInstance().PlayerTwo;
+        if (playerTwo.Length != 0)
+        {
+            Debug.Log("player 2: " + PickerManager.getInstance().PlayerTwo);
+            player2.GetComponent<Vehicle>().playerPrefix = PickerManager.getInstance().PlayerTwo;
+        }
+        else
+        {
+            player2.GetComponent<Vehicle>().playerPrefix = "j2";
+        }
+    }
 
     void SetupPowerUpLocations()
     {

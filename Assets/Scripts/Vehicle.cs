@@ -41,23 +41,29 @@ public class Vehicle : MonoBehaviour {
 //		if (Input.GetMouseButtonUp (0)) {
 //		Debug.Log("player prefix: " + playerPrefix);
 		if (Input.GetButton(playerPrefix + "Fire1")) {
-			GameObject laser;
+			GameObject laser1;
+            GameObject laser2;
 			if (specialAmmo != 0) {
-				laser = (GameObject)Instantiate (Resources.Load ("SpecialLaserBullet"), transform.position + new Vector3(-1f, 0, 0), Quaternion.identity);
-				specialAmmo--;
+				laser1 = (GameObject)Instantiate (Resources.Load ("SpecialLaserBullet"), transform.position + new Vector3(-0.5f, 0, 0), Quaternion.identity);
+                laser2 = (GameObject)Instantiate(Resources.Load("SpecialLaserBullet"), transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity);
+                specialAmmo--;
 			} else {
-				laser = (GameObject)Instantiate (Resources.Load ("LaserBullet"), transform.position + new Vector3(-1f, 0, 0), Quaternion.identity);
-			}
+				laser1 = (GameObject)Instantiate (Resources.Load ("LaserBullet"), transform.position + new Vector3(-0.5f, 0, 0), Quaternion.identity);
+                laser2 = (GameObject)Instantiate(Resources.Load("LaserBullet"), transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity);
+            }
 			//laser.transform.position = transform.position + new Vector3(-0.4f, 0, 0);
-			laser.GetComponent<Rigidbody>().AddForce(-transform.forward * shootForce);
-		}
+			laser1.GetComponent<Rigidbody>().AddForce(-transform.forward * shootForce);
+            laser2.GetComponent<Rigidbody>().AddForce(-transform.forward * shootForce);
+            Destroy(laser1, 3);
+            Destroy(laser2, 3);
+        }
 
 		float translation = Input.GetAxis(playerPrefix + "Vertical") * moveSpeed;
 		translation *= Time.deltaTime;
 		transform.Translate(new Vector3(-1 * translation, 0, 0));
         //transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         //transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
-        //this.GetComponent<Rigidbody>().AddForce(new Vector3(0, -10, 0));
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0, -10, 0));
 
 		float rotation = Input.GetAxis(playerPrefix + "Horizontal") * turnSpeed;
 		rotation *= Time.deltaTime;

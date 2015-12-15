@@ -32,8 +32,6 @@ public class GameScene3_Manager : GameManager {
 	}
 
 	void Update () {
-		Debug.Log (player1.transform.position);
-		Debug.Log (player1.transform.rotation);
         if(!gamePaused) {
 //			player1.GetComponent<Vehicle>().getHealth();
 			if (player1.GetComponent<Vehicle>().getHealth() <= 0) {
