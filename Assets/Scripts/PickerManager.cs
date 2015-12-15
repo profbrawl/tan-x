@@ -135,8 +135,8 @@ public class PickerManager : MonoBehaviour {
 		if(mPlayerOnePrefix.Length != 0 && mPlayerTwoPrefix.Length != 0) {
 			player1Controller();
 			player2Controller();
-			Debug.Log("player 1 character: " + (2 * mP1CurrentSelectedVertical + mP1CurrentSelectedHorizontal));
-			Debug.Log("player 2 character: " + (2 * mP2CurrentSelectedVertical + mP2CurrentSelectedHorizontal));
+//			Debug.Log("player 1 character: " + (2 * mP1CurrentSelectedVertical + mP1CurrentSelectedHorizontal));
+//			Debug.Log("player 2 character: " + (2 * mP2CurrentSelectedVertical + mP2CurrentSelectedHorizontal));
 		}
 	}
 
@@ -176,9 +176,7 @@ public class PickerManager : MonoBehaviour {
 //		);
 
 		float verticalAxis = Input.GetAxisRaw(mPlayerOnePrefix + "Vertical");
-		if (verticalAxis == 0) {
-			mIsP1VAxisInUse = false;
-		} else if (verticalAxis < 0) { // We move our controller joystick down
+		if (verticalAxis == -1) { // We move our controller joystick down
 			if (mP1InitalSelection) {
 				if (mIsP1VAxisInUse == false) { 
 					mIsP1VAxisInUse = true;
@@ -194,7 +192,7 @@ public class PickerManager : MonoBehaviour {
 					animateForward(playerOnePos, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
 				}
 			}
-		} else { // We move our controller joystick up
+		} else if (verticalAxis == 1) { // We move our controller joystick up
 			if (mP1InitalSelection) {
 				if (mIsP1VAxisInUse == false) { 
 					mIsP1VAxisInUse = true;
@@ -210,12 +208,12 @@ public class PickerManager : MonoBehaviour {
 					animateForward(playerOnePos, mP1CurrentSelectedHorizontal, mP1CurrentSelectedVertical);
 				}
 			}
+		} else {
+			mIsP1VAxisInUse = false;
 		}
 
 		float horizontalAxis = Input.GetAxisRaw(mPlayerOnePrefix + "Horizontal");
-		if (horizontalAxis == 0) {
-			mIsP1HAxisInUse = false;
-		} else if(horizontalAxis < 0) { // We moved our controller joystick left
+		if(horizontalAxis == -1) { // We moved our controller joystick left
 			if (!mP1InitalSelection) {
 				if (mIsP1HAxisInUse == false) {
 					mIsP1HAxisInUse = true;
@@ -232,7 +230,7 @@ public class PickerManager : MonoBehaviour {
 					mP1InitalSelection = false;
 				}
 			}
-		} else { // We moved our controller joystick right
+		} else if (horizontalAxis == 1) { // We moved our controller joystick right
 			if (!mP1InitalSelection) {
 				if (mIsP1HAxisInUse == false) {
 					mIsP1HAxisInUse = true;
@@ -250,6 +248,8 @@ public class PickerManager : MonoBehaviour {
 					mP1InitalSelection = false;
 				}
 			}
+		} else {
+			mIsP1HAxisInUse = false;
 		}
 	}
 
@@ -289,9 +289,7 @@ public class PickerManager : MonoBehaviour {
 //		);
 
 		float verticalAxis = Input.GetAxisRaw(mPlayerTwoPrefix + "Vertical");
-		if (verticalAxis == 0) {
-			mIsP2VAxisInUse = false;
-		} else if (verticalAxis < 0) { // We move our controller joystick down
+		if (verticalAxis == -1) { // We move our controller joystick down
 			if (mP2InitalSelection) {
 				if (mIsP2VAxisInUse == false) { 
 					mIsP2VAxisInUse = true;
@@ -307,7 +305,7 @@ public class PickerManager : MonoBehaviour {
 					animateForward(playerTwoPos, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
 				}
 			}
-		} else { // We move our controller joystick up
+		} else if (verticalAxis == 1) { // We move our controller joystick up
 			if (mP2InitalSelection) {
 				if (mIsP2VAxisInUse == false) { 
 					mIsP2VAxisInUse = true;
@@ -323,12 +321,12 @@ public class PickerManager : MonoBehaviour {
 					animateForward(playerTwoPos, mP2CurrentSelectedHorizontal, mP2CurrentSelectedVertical);
 				}
 			}
+		} else {
+			mIsP2VAxisInUse = false;
 		}
 
 		float horizontalAxis = Input.GetAxisRaw(mPlayerTwoPrefix + "Horizontal");
-		if (horizontalAxis == 0) {
-			mIsP2HAxisInUse = false;
-		} else if(horizontalAxis < 0) { // We moved our controller joystick left
+		if(horizontalAxis == -1) { // We moved our controller joystick left
 			if (!mP2InitalSelection) {
 				if (mIsP2HAxisInUse == false) {
 					mIsP2HAxisInUse = true;
@@ -345,7 +343,7 @@ public class PickerManager : MonoBehaviour {
 					mP2InitalSelection = false;
 				}
 			}
-		} else { // We moved our controller joystick right
+		} else if (horizontalAxis == 1) { // We moved our controller joystick right
 			if (!mP2InitalSelection) {
 				if (mIsP2HAxisInUse == false) {
 					mIsP2HAxisInUse = true;
@@ -363,6 +361,8 @@ public class PickerManager : MonoBehaviour {
 					mP2InitalSelection = false;
 				}
 			}
+		} else {
+			mIsP2HAxisInUse = false;
 		}
 	}
 
