@@ -88,6 +88,8 @@ public class PickerManager : MonoBehaviour {
 		mCharacters[2, 1] = sphere1;
 		mCharacters[3, 1]= cylinder1;
 
+		AudioSource.PlayClipAtPoint((AudioClip) Resources.Load("music"), new Vector3(0,0,0));
+
 //		StartCoroutine(playerController(mPlayerOnePrefix));
 //		StartCoroutine(playerController(mPlayerTwoPrefix));
 	}
