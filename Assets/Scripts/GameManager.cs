@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour {
     {
         List<PowerUpLocation> availableLocations = new List<PowerUpLocation>();
         foreach(PowerUpLocation powerUp in this.powerUpSpots){
+            if (powerUp.AttachedItem == null) { powerUp.Occupied = false; }
             if (!powerUp.Occupied) { availableLocations.Add(powerUp); }
         }
         if (availableLocations.Count == 0)
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour {
         }else
         {
             PowerUpLocation locationToSpawn = availableLocations[randomizer.Next(0 , availableLocations.Count)];
-            Instantiate(getPowerUp(randomizer.Next(1,3)), new Vector3(locationToSpawn.X, locationToSpawn.Y, locationToSpawn.Z), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+            locationToSpawn.AttachedItem = Instantiate(getPowerUp(randomizer.Next(1,3)), new Vector3(locationToSpawn.X, locationToSpawn.Y, locationToSpawn.Z), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as GameObject;
             locationToSpawn.Occupied = true;
         }
 

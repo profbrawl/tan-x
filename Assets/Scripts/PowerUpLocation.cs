@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class PowerUpLocation
 {
     private bool occupied;
     private float x, y, z;
+    private GameObject attachedItem;
 
     public PowerUpLocation(float x1, float y1, float z1)
     {
@@ -14,6 +16,7 @@ public class PowerUpLocation
         x = x1;
         y = y1;
         z = z1;
+        this.attachedItem = null;
     }
 
     public bool Occupied
@@ -38,5 +41,11 @@ public class PowerUpLocation
     {
         get { return this.z; }
         set { this.z = value; }
+    }
+
+    public GameObject AttachedItem
+    {
+        get { return this.attachedItem; }
+        set { this.attachedItem = value; }
     }
 }
